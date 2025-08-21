@@ -1,0 +1,248 @@
+<!-- FILE: portfolio.html (White mode + edge blobs + glass UI) -->
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portofoliu — Blueprint Studio Works</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* ---------- Stiluri specifice paginii de portofoliu ---------- */
+
+        body[data-page="portfolio"] .edge-blobs{
+            position: fixed; inset: 0; pointer-events: none; z-index: -2;
+        }
+        /* === EDGE BLOBS – PORTOFOLIU (mai mari, doar pe margini) === */
+        body[data-page="portfolio"] .edge-blobs{
+            position: fixed; inset: 0; pointer-events: none; z-index: -2;
+        }
+        body[data-page="portfolio"] .e-blob{
+            position:absolute; aspect-ratio:1/1;
+            width: clamp(720px, 60vw, 1600px);               /* ← mai mare */
+            border-radius:58% 42% 64% 36% / 48% 62% 38% 52%;
+            background:
+                    radial-gradient(60% 60% at 30% 30%, rgba(0,208,255,.70), transparent 70%),
+                    radial-gradient(58% 58% at 70% 70%, rgba(122,92,255,.60), transparent 72%),
+                    radial-gradient(42% 42% at 50% 50%, rgba(255,122,217,.30), transparent 62%);
+            filter: blur(22px) saturate(120%);               /* ← mai soft */
+            opacity: .48;
+            animation: eDrift 40s linear infinite, morphA 26s ease-in-out infinite alternate, colorShift 90s linear infinite;
+        }
+        body[data-page="portfolio"] .e-left  { left: -30%; top: -6%;  transform: scale(1.08) }
+        body[data-page="portfolio"] .e-right { right:-30%; bottom:-12%; transform: scale(1.04) }
+
+        @keyframes eDrift{
+            0%{ transform: translate3d(0,0,0) }
+            25%{ transform: translate3d(3vw,-2vh,0) }
+            50%{ transform: translate3d(0,3vh,0) }
+            75%{ transform: translate3d(-3vw,-1vh,0) }
+            100%{ transform: translate3d(0,0,0) }
+        }
+
+
+        /* Hero */
+        .pf-hero{position:relative; padding-top: 40px}
+        .pf-title{font-size: clamp(36px,5.6vw,72px); margin: 0 0 8px; letter-spacing:-.02em}
+        .pf-kick{font-size: clamp(16px,1.6vw,20px); color:#32405f; margin: 0 0 18px}
+
+        /* Filter bar */
+        .filter-bar{display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px}
+        .chip{padding:10px 14px; border-radius:999px; cursor:pointer}
+        .chip.is-active{box-shadow:0 10px 26px rgba(15,23,48,.16), inset 0 1px 0 rgba(255,255,255,.6)}
+
+        /* Grid de proiecte */
+        .pf-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+        @media (max-width:980px){ .pf-grid{ grid-template-columns:1fr 1fr } }
+        @media (max-width:640px){ .pf-grid{ grid-template-columns:1fr } }
+
+        .p-card{
+            position:relative; border-radius:18px; overflow:hidden;
+            background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.58));
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 12px 28px rgba(15,23,48,.12);
+            transition: transform .24s ease, box-shadow .24s ease;
+            isolation: isolate;
+            --mx:50%; --my:50%; /* pentru follow glow */
+        }
+        .p-card:hover{ transform: translateY(-6px) scale(1.02); box-shadow: 0 22px 46px rgba(15,23,48,.20) }
+
+        .p-thumb{ display:block; width:100%; height:220px; object-fit:cover }
+        .p-meta{
+            position:absolute; left:12px; bottom:12px; right:12px;
+            display:flex; align-items:center; justify-content:space-between;
+            gap:12px; padding:10px 12px; border-radius:14px;
+            background: linear-gradient(180deg, rgba(255,255,255,.70), rgba(255,255,255,.48));
+            border: 1px solid rgba(255,255,255,.55);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        }
+        .p-title{font-weight:700; margin:0}
+        .p-tags{font-size:13px; color:#55607d}
+
+        /* follow glow pe card (nu schimbă culoarea textului) */
+        .p-card::before{
+            content:""; position:absolute; inset:-25%; border-radius:inherit; pointer-events:none;
+            background:
+                    radial-gradient(180px 160px at var(--mx) var(--my),
+                    color-mix(in oklab, var(--c2) 55%, transparent) 0, transparent 60%),
+                    radial-gradient(240px 200px at calc(var(--mx) + 6%) calc(var(--my) + 10%),
+                    color-mix(in oklab, var(--c1) 45%, transparent) 0, transparent 72%),
+                    radial-gradient(200px 160px at calc(var(--mx) - 6%) calc(var(--my) - 6%),
+                    color-mix(in oklab, var(--c3) 35%, transparent) 0, transparent 68%);
+            filter: blur(18px) saturate(140%); mix-blend-mode: screen;
+            opacity: 0; transition: opacity .25s ease;
+        }
+        .p-card:hover::before{ opacity: 1 }
+
+        /* CTA de final */
+        .pf-cta{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-top:28px }
+    </style>
+
+    <script defer src="app.js"></script>
+</head>
+<body data-page="portfolio">
+<div class="grid-bg" aria-hidden="true"></div>
+<!-- edge blobs (margini) -->
+<div class="edge-blobs" aria-hidden="true">
+    <div class="e-blob e-left"></div>
+    <div class="e-blob e-right"></div>
+</div>
+
+<header class="site-header">
+    <a class="brand" href="index.html" aria-label="Blueprint Studio Works">
+        <svg viewBox="0 0 180 40" class="brand-svg" role="img" aria-label="BSW">
+            <text x="0" y="28" class="brand-outline-light">BSW</text>
+        </svg>
+        <span class="brand-text-dark">Blueprint Studio Works</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigație principală">
+        <a href="portfolio.html" class="glass-btn sm">Portofoliu</a>
+        <a href="pricing.html" class="glass-btn sm">Pachete</a>
+        <a href="tracker.html" class="glass-btn sm">Site&nbsp;Tracker</a>
+        <a href="contact.html" class="glass-btn">Contact</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Deschide meniul">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<main class="contain pf-hero">
+    <h1 class="pf-title">Portofoliu</h1>
+    <p class="pf-kick">Selecție de proiecte gândite pentru conversie, viteză și memorabilitate.</p>
+
+    <div class="filter-bar" role="tablist" aria-label="Filtre portofoliu">
+        <button class="glass-btn chip is-active" role="tab" aria-selected="true">Toate</button>
+        <button class="glass-btn chip" role="tab">Landing</button>
+        <button class="glass-btn chip" role="tab">eCommerce</button>
+        <button class="glass-btn chip" role="tab">Brand</button>
+    </div>
+
+    <section class="pf-grid" style="margin-top:18px">
+        <!-- Exemplu card proiect -->
+        <article class="p-card">
+            <img class="p-thumb" src="https://picsum.photos/seed/alpha/1200/800" alt="Alpha Landing Page" loading="lazy">
+            <div class="p-meta">
+                <div>
+                    <h3 class="p-title">Alpha Landing</h3>
+                    <div class="p-tags">Landing • Copy & Design • Animations</div>
+                </div>
+                <a class="glass-btn sm" href="#" aria-label="Detalii Alpha">Detalii</a>
+            </div>
+        </article>
+
+        <article class="p-card">
+            <img class="p-thumb" src="https://picsum.photos/seed/bravo/1200/800" alt="Bravo Shop" loading="lazy">
+            <div class="p-meta">
+                <div>
+                    <h3 class="p-title">Bravo Shop</h3>
+                    <div class="p-tags">eCommerce • UX • Perf 95+</div>
+                </div>
+                <a class="glass-btn sm" href="#" aria-label="Detalii Bravo">Detalii</a>
+            </div>
+        </article>
+
+        <article class="p-card">
+            <img class="p-thumb" src="https://picsum.photos/seed/charlie/1200/800" alt="Charlie Brand Site" loading="lazy">
+            <div class="p-meta">
+                <div>
+                    <h3 class="p-title">Charlie Brand</h3>
+                    <div class="p-tags">Brand • Motion • 3D hero</div>
+                </div>
+                <a class="glass-btn sm" href="#" aria-label="Detalii Charlie">Detalii</a>
+            </div>
+        </article>
+
+        <article class="p-card">
+            <img class="p-thumb" src="https://picsum.photos/seed/delta/1200/800" alt="Delta SaaS" loading="lazy">
+            <div class="p-meta">
+                <div>
+                    <h3 class="p-title">Delta SaaS</h3>
+                    <div class="p-tags">SaaS • Pricing • Onboarding</div>
+                </div>
+                <a class="glass-btn sm" href="#" aria-label="Detalii Delta">Detalii</a>
+            </div>
+        </article>
+
+        <article class="p-card">
+            <img class="p-thumb" src="https://picsum.photos/seed/echo/1200/800" alt="Echo Studio" loading="lazy">
+            <div class="p-meta">
+                <div>
+                    <h3 class="p-title">Echo Studio</h3>
+                    <div class="p-tags">Portfolio • WebGL • Light</div>
+                </div>
+                <a class="glass-btn sm" href="#" aria-label="Detalii Echo">Detalii</a>
+            </div>
+        </article>
+
+        <article class="p-card">
+            <img class="p-thumb" src="https://picsum.photos/seed/foxtrot/1200/800" alt="Foxtrot Events" loading="lazy">
+            <div class="p-meta">
+                <div>
+                    <h3 class="p-title">Foxtrot Events</h3>
+                    <div class="p-tags">Events • Ticketing • CMS</div>
+                </div>
+                <a class="glass-btn sm" href="#" aria-label="Detalii Foxtrot">Detalii</a>
+            </div>
+        </article>
+    </section>
+
+    <section class="pf-cta">
+        <h2 style="margin:0">Îți place direcția?</h2>
+        <div style="display:flex; gap:10px">
+            <a class="glass-btn lg" href="contact.html">Cere o ofertă</a>
+            <a class="glass-btn" href="pricing.html">Vezi pachetele</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer contain" style="margin-top:32px">
+    <div class="columns">
+        <div>
+            <div class="brand-min">BSW</div>
+            <p class="muted">Experiențe web care impresionează și vând.</p>
+        </div>
+        <div>
+            <h5>Pagini</h5>
+            <ul>
+                <li><a href="portfolio.html">Portofoliu</a></li>
+                <li><a href="pricing.html">Pachete</a></li>
+                <li><a href="tracker.html">Site Tracker</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <h5>Legal</h5>
+            <ul>
+                <li><a href="#">Termeni &amp; Condiții</a></li>
+                <li><a href="#">Politica de confidențialitate</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copy muted">© <span id="year"></span> Blueprint Studio Works. Toate drepturile rezervate.</div>
+</footer>
+</body>
+</html>
