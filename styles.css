@@ -356,3 +356,497 @@ select.glass-select{position:absolute !important; opacity:0 !important; pointer-
     0 0 0 6px color-mix(in oklab, #000 4%, transparent);
     border-radius: inherit;
 }
+
+/* === DECOR LAYERS =================================================== */
+.decor{position:fixed; inset:0; pointer-events:none; z-index:-3}
+
+/* 1) DOTS (pattern subtil, ca un watermark) */
+.deco-dots{
+    background-image:
+            radial-gradient(#2a2e35 1.2px, transparent 1.2px),
+            radial-gradient(#2a2e35 1.2px, transparent 1.2px);
+    background-size: 28px 28px, 28px 28px;
+    background-position: 0 0, 14px 14px;  /* grid offset pentru dinamism */
+    opacity:.12;
+    mask-image: radial-gradient(80% 80% at 70% 30%, #000 55%, transparent 85%);
+}
+
+/* 2) LINES (subțiri, paralele, ușor animate) */
+.deco-lines{
+    background:
+            repeating-linear-gradient(
+                    115deg,
+                    rgba(13, 168, 255, .12) 0 1px,
+                    transparent 1px 18px
+            );
+    animation: driftLines 28s linear infinite;
+    opacity:.22;
+    mask-image: radial-gradient(70% 70% at 25% 75%, #000 60%, transparent 85%);
+}
+@keyframes driftLines{
+    from { background-position: 0 0 }
+    to   { background-position: 200px 200px }
+}
+
+/* 3) ORBS (bile soft blur – „light leaks”) */
+.deco-orbs{ isolation:isolate }
+.deco-orbs .orb{
+    position:absolute; width:42vmin; aspect-ratio:1/1; border-radius:50%;
+    filter: blur(28px) saturate(120%); opacity:.35; mix-blend-mode:screen;
+}
+.deco-orbs .o1{ left:-8vmin;  top:12vmin;  background:radial-gradient(circle at 40% 40%, #00d0ff, transparent 60%); animation:orb1 36s ease-in-out infinite alternate }
+.deco-orbs .o2{ right:-10vmin; bottom:10vmin; background:radial-gradient(circle at 60% 60%, #7a5cff, transparent 60%); animation:orb2 44s ease-in-out infinite alternate }
+.deco-orbs .o3{ left:50%; top:60%; transform:translate(-50%,-50%); width:32vmin;
+    background:radial-gradient(circle at 50% 50%, #ff7ad9, transparent 60%); animation:orb3 52s ease-in-out infinite alternate }
+@keyframes orb1{ 0%{transform:translateY(0)} 100%{transform:translateY(-4vmin)} }
+@keyframes orb2{ 0%{transform:translate(0,0)} 100%{transform:translate(-3vmin, 2vmin)} }
+@keyframes orb3{ 0%{transform:scale(1)} 100%{transform:scale(1.08)} }
+
+/* 4) NOISE (grain foarte fin – dă profunzime) */
+.deco-noise{
+    background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0 .06 .12 .18 0'/></feComponentTransfer></filter>\
+<rect width='100%' height='100%' filter='url(#n)'/>\
+</svg>");
+    opacity:.08;
+    mix-blend-mode: multiply;
+}
+
+/* Opțional: ascunde decorurile pe mobile foarte mici */
+@media (max-width:520px){
+    .deco-lines{opacity:.12}
+    .deco-orbs .orb{filter:blur(24px); opacity:.28; width:36vmin}
+}
+/* ---------- Progres (LIQUID GLASS) ---------- */
+.progress{ margin-top:14px }
+.progress__label{ display:flex; justify-content:space-between; font-weight:600; margin:0 0 6px }
+
+.progress__bar{
+    --bar:#0da8ff;            /* culoarea accent (fără curcubeu) */
+    position:relative; height:16px; border-radius:999px; overflow:hidden;
+    background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.35));
+    box-shadow: inset 0 2px 10px rgba(15,23,48,.10), 0 6px 14px rgba(15,23,48,.08);
+    border:1px solid rgba(255,255,255,.55);
+}
+
+/* grid subtil în track */
+.progress__bar::after{
+    content:""; position:absolute; inset:0;
+    background: repeating-linear-gradient(90deg, rgba(15,23,48,.06) 0 24px, rgba(15,23,48,0) 24px 48px);
+    mix-blend-mode:multiply; opacity:.4; pointer-events:none;
+}
+
+/* umplerea – mono, cu reflex sticlos */
+.progress__fill{
+    position:absolute; left:0; top:0; bottom:0; width:0%;
+    border-radius:inherit;
+    background:
+            linear-gradient(180deg, color-mix(in oklab, var(--bar) 92%, white) 0%,
+            color-mix(in oklab, var(--bar) 78%, black) 100%);
+    box-shadow: inset 0 0 14px rgba(255,255,255,.4);
+    transition: width 1s ease;
+}
+
+/* bule care curg în interiorul barei */
+.progress__fill::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:200%;
+    background:
+            radial-gradient(12px 12px at 10% 60%, rgba(255,255,255,.45), transparent 60%),
+            radial-gradient(8px 8px at 25% 40%, rgba(255,255,255,.35), transparent 60%),
+            radial-gradient(10px 10px at 40% 70%, rgba(255,255,255,.32), transparent 60%),
+            radial-gradient(6px 6px at 55% 35%, rgba(255,255,255,.38), transparent 60%),
+            radial-gradient(12px 12px at 70% 65%, rgba(255,255,255,.32), transparent 60%),
+            radial-gradient(8px 8px at 85% 45%, rgba(255,255,255,.35), transparent 60%);
+    opacity:.65; filter: blur(1px);
+    animation: bubbles 6s linear infinite;
+}
+@keyframes bubbles{ from{ transform: translateX(-25%) } to{ transform: translateX(0%) } }
+
+/* cap luminos la marginea progresului */
+.progress__fill::after{
+    content:""; position:absolute; right:-10px; top:50%;
+    width:22px; height:22px; transform:translateY(-50%); border-radius:50%;
+    background:
+            radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.45) 35%,
+            color-mix(in oklab, var(--bar) 85%, transparent) 36%,
+            transparent 70%);
+    box-shadow: 0 0 24px color-mix(in oklab, var(--bar) 60%, transparent),
+    0 0 48px color-mix(in oklab, var(--bar) 35%, transparent);
+    animation: capPulse 1.8s ease-in-out infinite;
+}
+@keyframes capPulse{
+    0%,100%{ box-shadow: 0 0 18px color-mix(in oklab, var(--bar) 55%, transparent),
+    0 0 36px color-mix(in oklab, var(--bar) 28%, transparent) }
+    50%   { box-shadow: 0 0 30px color-mix(in oklab, var(--bar) 75%, transparent),
+    0 0 66px color-mix(in oklab, var(--bar) 38%, transparent) }
+}
+
+/* ===== Page Transitions: MATTE GLASS SHEET (vizibil) ===== */
+:root{
+    --xfade-dur: 600ms;                  /* mai lung & vizibil */
+    --xfade-ease: cubic-bezier(.2,.9,.15,1);
+}
+
+/* foaia de sticlă mată care acoperă pagina */
+.page-xfade{
+    position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+
+    /* stratul de sticlă mată + tentă din paleta site-ului */
+    background:
+            linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.78) 55%, rgba(255,255,255,.72)),
+            radial-gradient(90% 80% at 0% 0%, color-mix(in oklab, var(--c1) 22%, transparent), transparent 60%),
+            radial-gradient(100% 85% at 100% 100%, color-mix(in oklab, var(--c3) 18%, transparent), transparent 60%),
+            radial-gradient(120% 100% at 100% 0%, color-mix(in oklab, var(--c2) 16%, transparent), transparent 65%);
+    backdrop-filter: blur(20px) saturate(140%) brightness(1.05);
+    -webkit-backdrop-filter: blur(20px) saturate(140%) brightness(1.05);
+
+    /* accentuați vizual: ușor tilt + scale la început */
+    transform: translateY(14px) scale(1.03) rotate(.6deg);
+    opacity: 1;
+
+    box-shadow:
+            inset 0 0 0 1px rgba(255,255,255,.55),      /* contur “sticlă” */
+            inset 0 -80px 160px rgba(15,23,48,.10),     /* shading jos */
+            inset 0  80px 160px rgba(15,23,48,.06);     /* shading sus */
+
+    transition:
+            opacity var(--xfade-dur) var(--xfade-ease),
+            transform var(--xfade-dur) var(--xfade-ease);
+}
+
+/* sheen/motion-blur care trece peste foaie */
+.page-xfade::before{
+    content:"";
+    position:absolute; inset:-12% -35%;
+    background:
+            linear-gradient(115deg,
+            transparent 0 24%,
+            color-mix(in oklab, var(--c1) 42%, transparent) 36% 45%,
+            color-mix(in oklab, var(--c2) 34%, transparent) 47% 60%,
+            color-mix(in oklab, var(--c3) 28%, transparent) 62% 70%,
+            transparent 80% 100%);
+    filter: blur(50px) saturate(150%);
+    mix-blend-mode: screen;
+    transform: translateX(-60%);
+    animation: xfade-sweep 900ms ease-in-out infinite;
+    opacity: .9;
+}
+
+/* vignette discret pe margini pentru “sheet” autentic */
+.page-xfade::after{
+    content:"";
+    position:absolute; inset:0;
+    background: radial-gradient(100% 100% at 50% 50%, transparent 60%, rgba(15,23,48,.12) 100%);
+    pointer-events:none;
+}
+
+/* când e ascuns => pagina e vizibilă */
+.page-xfade.hide{
+    opacity: 0;
+    transform: none;
+}
+
+/* accesibilitate */
+@media (prefers-reduced-motion: reduce){
+    .page-xfade,
+    .page-xfade::before,
+    .page-xfade::after{
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        opacity: 0 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
+
+/* sweep-ul de motion blur peste ecran */
+@keyframes xfade-sweep{
+    from { transform: translateX(-60%) }
+    to   { transform: translateX(60%)  }
+}
+
+
+/* === Dotted design (landing only) === */
+.hero-blob .dots{
+    position:absolute; z-index:-1;       /* peste blobs (-2), sub carduri */
+    pointer-events:none;
+    width:clamp(140px, 18vw, 260px);
+    height:clamp(140px, 18vw, 260px);
+    /* densitate & dimensiune puncte (poți regla ușor) */
+    --gap: 16px;          /* distanța dintre puncte */
+    --size: 3px;          /* diametrul punctului */
+    --dot: rgba(15,23,48,.65);  /* culoarea punctelor */
+    background-image:
+            radial-gradient(circle at center, var(--dot) var(--size), transparent calc(var(--size) + 1px));
+    background-size: var(--gap) var(--gap);
+    background-position: 0 0;
+    border-radius: 8px;   /* pătrat ușor rotunjit, ca restul UI */
+    opacity:.55;
+    transform: translateZ(0); /* claritate */
+}
+.hero-blob .dots-tl{ top: calc(var(--pad)); left: calc(var(--pad)); }
+.hero-blob .dots-br{ right: calc(var(--pad)); bottom: calc(var(--pad)); }
+
+/* pe ecrane mici le ascundem ca să nu aglomerăm */
+@media (max-width: 720px){
+    .hero-blob .dots{ display:none }
+}
+
+/* (opțional) parallax foarte subtil pe scroll */
+@media (min-width: 721px){
+    .hero-blob .dots { will-change: transform }
+}
+
+/* === Mobile Button Polish (global) === */
+@media (max-width: 720px){
+    :root{ --radius:18px; }
+
+    /* toate butoanele text */
+    .glass-btn, .btn{
+        padding:12px 16px;
+        border-radius:16px;
+        font-weight:600;
+        min-height:46px;            /* tap target iOS/Android */
+        line-height:1.12;
+        text-align:center;
+        box-shadow:0 10px 22px rgba(15,23,48,.12), inset 0 1px 0 rgba(255,255,255,.55);
+        width:auto;
+    }
+
+    /* creșterea la hover nu are sens pe touch */
+    .glass-btn:hover, .btn:hover{ transform:none }
+    .glass-btn:active, .btn:active{ transform:translateY(1px) scale(.98) }
+
+    /* CTA din hero: 1 col, full width */
+    .cta-row{ display:grid; grid-template-columns:1fr; gap:10px }
+    .cta-row .glass-btn{ width:100% }
+
+    /* butoane din carduri – full width & radius potrivit */
+    .track-card .glass-btn,
+    .plan-card  .glass-btn,
+    .p-card     .glass-btn,
+    .mini       .glass-btn{ width:100%; border-radius:14px }
+
+    /* rândurile din tracker: 1 col + spacing corect */
+    .tr-row{ grid-template-columns:1fr !important; gap:10px }
+    .glass-input{ height:46px; border-radius:14px }
+
+    /* icon buttons mai compacte */
+    .btn-icon{ width:52px; height:52px }
+}
+
+/* pe device-uri touch dezactivăm creșterea la hover peste tot */
+@media (pointer: coarse){
+    .glass-btn:hover, .btn:hover, .btn-icon:hover{ transform:none }
+}
+
+/* nav mobil – linkuri pe lățime întreagă */
+@media (max-width: 920px){
+    .site-nav a.glass-btn,
+    .site-nav a.nav-link,
+    .site-nav a.nav-link-dark{ width:100% }
+}
+
+/* Blobs mai vizibile pe mobil */
+@media (max-width: 768px) {
+    .blob {
+        width: 50vmax;
+        height: 40vmax;
+        filter: blur(80px);
+        opacity: 0.5; /* mai vizibile decât pe desktop */
+    }
+
+    .blob-stage {
+        overflow: hidden; /* să nu se întindă peste tot */
+    }
+}
+
+/* ===== OPTIMIZĂRI MOBILE ===== */
+@media (max-width: 768px) {
+    .cta-row {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+        width: 100%;
+    }
+
+    .btn {
+        width: 90%;
+        max-width: 320px;
+        padding: 14px 18px;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    /* carduri de pe site să nu rămână înguste */
+    .glass, .mini, .card {
+        width: 90%;
+        margin: 0 auto 20px auto;
+    }
+
+    /* nav links să fie lizibile */
+    .site-nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .site-nav .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* === OVERRIDES: carduri mai mari + geam mai înalt === */
+
+/* Mai puține coloane pe desktop => fiecare card e mai lat */
+.pf-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+@media (min-width: 1400px){
+    .pf-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 980px){
+    .pf-grid{ grid-template-columns: 1fr; }
+}
+
+/* Card mai „solid” */
+.p-card{
+    border-radius: 22px;
+    box-shadow: 0 16px 36px rgba(15,23,48,.16);
+}
+
+/* Imagine mai înaltă (înălțimea cardului) */
+.p-thumb{ height: 320px; }
+@media (max-width: 1100px){ .p-thumb{ height: 280px; } }
+@media (max-width: 720px){  .p-thumb{ height: 240px; } }
+
+/* „Fereastra” (p-meta) mai mare și cu spațiere mai generoasă */
+.p-meta{
+    left: 16px; right: 16px; bottom: 16px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    gap: 16px;
+}
+
+/* Titluri ușor mai mari în geam */
+.p-title{ font-size: 20px; }
+.p-tags{ font-size: 14px; }
+
+/* Butoane puțin mai mari în card */
+.p-meta .glass-btn.sm{ padding: 12px 16px; font-size: 15px; }
+
+/* ===== PERF / MOBILE SAFE BLOBS ===== */
+
+/* Mod “lite” setat de JS pentru device-uri modeste sau reduce-motion */
+body.is-lite .blob {
+    animation: none !important;
+    filter: blur(50px) saturate(110%) !important;
+    opacity: .35 !important;
+    transform: none !important;
+}
+body.is-lite .blob::before { display: none !important; }
+
+/* Pe mobile: mutăm scena pe FIXED & extindem marginile ca să nu se „taie”
+   (iOS WebKit taie blur-ul când containerul e prea strâns) */
+@media (max-width: 768px) {
+    .blob-stage{
+        position: fixed !important;
+        inset: -40% -25% -40% -25% !important; /* mult mai mare, nu se mai taie */
+        z-index: -2;
+        transform: translateZ(0); /* forțează compozitorul GPU */
+    }
+    /* păstrăm doar 2 blobs, restul ascunse -> mai ieftin pe mobil */
+    .blob.b3, .blob.b4 { display: none !important; }
+
+    .blob{
+        width: 56vmax !important;
+        filter: blur(72px) !important;
+        opacity: .48 !important;
+    }
+}
+
+/* Oprim complet decorul dacă userul preferă reduce motion */
+@media (prefers-reduced-motion: reduce){
+    .blob, .blob::before { animation: none !important; }
+    .blob-stage { position: absolute !important; }
+}
+
+/* mic polish: umbră mai ușoară la carduri pe mobil */
+@media (max-width: 768px){
+    .glass, .mini, .p-card {
+        box-shadow: 0 10px 22px rgba(15,23,48,.12) !important;
+    }
+}
+
+/* Înghețăm animatiile când tab-ul e în background (JS adaugă .is-paused) */
+body.is-paused * {
+    animation-play-state: paused !important;
+}
+
+/* === MOBILE: blobs mult mai MARI + culori mai puternice === */
+@media (max-width: 768px){
+    /* scena mai mare ca să nu se taie blur-ul pe iOS */
+    .blob-stage{
+        position: fixed !important;
+        inset: -55% -35% -55% -35% !important; /* extins în afara viewport */
+        z-index: -2;
+        transform: translateZ(0);
+        pointer-events: none;
+    }
+
+    /* păstrăm doar 2 blobs, dar le facem MASIVE și saturate */
+    .blob{
+        width: 120vmax !important;          /* foarte mare */
+        filter: blur(60px) saturate(185%) !important;
+        opacity: .78 !important;
+    }
+    .blob.b3, .blob.b4 { display: none !important; }
+
+    /* mișcare ușor mai rapidă, dar mai “largă” */
+    @keyframes drift{
+        0%{transform:translate3d(0,0,0) scale(1.35)}
+        25%{transform:translate3d(8vw,-4vh,0) scale(1.4)}
+        50%{transform:translate3d(2vw,6vh,0) scale(1.45)}
+        75%{transform:translate3d(-8vw,-3vh,0) scale(1.38)}
+        100%{transform:translate3d(0,0,0) scale(1.35)}
+    }
+
+    /* strat de “matte wash” ca pe desktop – garantează culoare bogată */
+    .hero-blob::after{
+        content:"";
+        position: fixed; inset:-10% -10% -10% -10%;
+        pointer-events:none; z-index:-3;
+        background:
+                radial-gradient(40% 35% at 18% 22%, rgba(0,208,255,.35), transparent 60%),
+                radial-gradient(45% 40% at 78% 28%, rgba(122,92,255,.35), transparent 62%),
+                radial-gradient(48% 45% at 50% 82%, rgba(255,122,217,.30), transparent 64%);
+        filter: blur(40px) saturate(160%);
+        opacity:.85;
+    }
+
+    /* dots puțin mai vizibile, ca pe desktop */
+    .grid-bg{ opacity:.55 }
+}
+
+/* telefoane mici – încă și mai intens */
+@media (max-width: 480px){
+    .blob{ width: 145vmax !important; filter: blur(68px) saturate(200%) !important; opacity:.82 !important }
+    .hero-blob::after{ filter: blur(46px) saturate(170%); opacity:.9 }
+}
+
+/* Lite dar colorat pe mobil: fără anim, dar cu wash saturat */
+body.is-lite .blob { animation:none !important; transform:none !important; opacity:.75 !important }
+body.is-lite .blob::before{ display:none !important }
+body.is-lite .hero-blob::after{
+    content:""; position:fixed; inset:-10% -10% -10% -10%; z-index:-3; pointer-events:none;
+    background:
+            radial-gradient(42% 38% at 18% 22%, rgba(0,208,255,.35), transparent 60%),
+            radial-gradient(46% 42% at 78% 28%, rgba(122,92,255,.35), transparent 62%),
+            radial-gradient(50% 46% at 50% 82%, rgba(255,122,217,.30), transparent 64%);
+    filter: blur(44px) saturate(170%);
+    opacity:.88;
+}

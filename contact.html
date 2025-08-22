@@ -1,4 +1,4 @@
-<!-- FILE: contact.html (White mode + edge blobs + Glass Contact) -->
+<!-- FILE: contact.html (White mode + edge blobs + Glass Contact + Glass Checkbox) -->
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -62,16 +62,13 @@
         }
         .contact-card.in{ opacity:1; transform:none }
 
-        /* follow glow pe card (textul nu-și schimbă culoarea) */
+        /* follow glow pe card */
         .contact-card::before{
             content:""; position:absolute; inset:-25%; border-radius:inherit; pointer-events:none;
             background:
-                    radial-gradient(200px 180px at var(--mx) var(--my),
-                    color-mix(in oklab, var(--c2) 55%, transparent) 0, transparent 60%),
-                    radial-gradient(260px 220px at calc(var(--mx) + 6%) calc(var(--my) + 10%),
-                    color-mix(in oklab, var(--c1) 45%, transparent) 0, transparent 72%),
-                    radial-gradient(220px 180px at calc(var(--mx) - 6%) calc(var(--my) - 6%),
-                    color-mix(in oklab, var(--c3) 35%, transparent) 0, transparent 68%);
+                    radial-gradient(200px 180px at var(--mx) var(--my), color-mix(in oklab, var(--c2) 55%, transparent) 0, transparent 60%),
+                    radial-gradient(260px 220px at calc(var(--mx) + 6%) calc(var(--my) + 10%), color-mix(in oklab, var(--c1) 45%, transparent) 0, transparent 72%),
+                    radial-gradient(220px 180px at calc(var(--mx) - 6%) calc(var(--my) - 6%), color-mix(in oklab, var(--c3) 35%, transparent) 0, transparent 68%);
             filter: blur(18px) saturate(140%); mix-blend-mode: screen;
             opacity:0; transition: opacity .25s ease;
         }
@@ -96,8 +93,36 @@
         .form-actions{ display:flex; gap:10px; align-items:center; margin-top:8px; flex-wrap:wrap }
         .hint{ font-size:13px; color:#55607d }
 
-        /* Butonul principal pe prima scenă (doar crește la hover) */
+        /* Butonul principal pe prima scenă */
         #startContact{ margin-top:10px }
+
+        /* ------- Glass Checkbox (custom look) ------- */
+        .check-wrap{
+            display:flex; align-items:flex-start; gap:10px; padding:12px 14px;
+            border-radius:14px;
+            background: linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.36));
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+            backdrop-filter: blur(8px);
+            cursor:pointer;
+        }
+        .check-wrap .box{
+            position:relative; width:22px; height:22px; flex:0 0 22px; border-radius:6px;
+            background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.55));
+            border:1px solid rgba(0,0,0,.08);
+            box-shadow: inset 0 2px 6px rgba(15,23,48,.12);
+        }
+        .check-wrap input{
+            position:absolute; inset:0; width:22px; height:22px; margin:0; opacity:0; cursor:pointer;
+        }
+        .check-wrap .tick{
+            position:absolute; inset:0; display:grid; place-items:center; opacity:0; transform:scale(.8);
+            transition:opacity .18s ease, transform .18s ease;
+        }
+        .check-wrap .tick svg{ width:16px; height:16px; color:#0da8ff }
+        .check-wrap input:checked + .box .tick{ opacity:1; transform:scale(1) }
+
+        .check-title{ font-weight:700; color:#0e1b45 }
+        .check-sub{ font-size:13px; color:#4a587a }
     </style>
 
     <script defer src="app.js"></script>
@@ -173,19 +198,52 @@
                             <label for="package">Pachetul ales</label>
                             <select class="glass-select" id="package" name="package">
                                 <option value="" selected>Nu sunt sigur încă</option>
-                                <option>Starter</option>
-                                <option>Launch</option>
-                                <option>Growth</option>
-                                <option>Pro</option>
-                                <option>eCommerce</option>
-                                <option>Ultimate</option>
+                                <option>Site Simplu</option>
+                                <option>Site Complex</option>
+                                <option>E-Commerce</option>
                                 <option>Personalizat</option>
                             </select>
+                        </div>
+
+                        <!-- ▸▸ Checkbox: Dorești hosting? (glass-styled) -->
+                        <div class="form-field" style="grid-column:1 / -1">
+                            <label class="check-wrap" for="hosting">
+                                <input type="checkbox" id="hosting" name="hosting" aria-describedby="hostingSub">
+                                <div class="box">
+                                    <span class="tick">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20 6L9 17l-5-5"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div>
+                                    <div class="check-title">Doresc și hosting</div>
+                                    <div id="hostingSub" class="check-sub">€20 / lună — SSL inclus, backup zilnic, suport rapid.</div>
+                                </div>
+                            </label>
                         </div>
 
                         <div class="form-field" style="grid-column:1 / -1">
                             <label for="descriere">Descrierea proiectului</label>
                             <textarea class="glass-textarea" id="descriere" name="descriere" placeholder="Spune-mi ce ai în minte: obiectiv, public țintă, funcționalități, referințe..."></textarea>
+                        </div>
+
+                        <!-- ▸▸ Checkbox: Accept Termeni & Condiții (OBLIGATORIU) -->
+                        <div class="form-field" style="grid-column:1 / -1">
+                            <label class="check-wrap" for="terms">
+                                <input type="checkbox" id="terms" name="terms" required aria-describedby="termsNote">
+                                <div class="box">
+                                    <span class="tick">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20 6L9 17l-5-5"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div>
+                                    <div class="check-title">Sunt de acord cu <a href="terms.html" target="_blank" rel="noopener noreferrer">Termenii și Condițiile</a></div>
+                                    <div id="termsNote" class="check-sub">Trebuie să bifezi această căsuță pentru a trimite formularul.</div>
+                                </div>
+                            </label>
                         </div>
                     </div>
 
@@ -217,12 +275,30 @@
         <div>
             <h5>Legal</h5>
             <ul>
-                <li><a href="#">Termeni &amp; Condiții</a></li>
-                <li><a href="#">Politica de confidențialitate</a></li>
+                <li><a href="terms.html">Termeni &amp; Condiții</a></li>
+                <li><a href="privacy.html">Politica de confidențialitate</a></li>
             </ul>
         </div>
     </div>
     <div class="copy muted">© <span id="year"></span> Blueprint Studio Works. Toate drepturile rezervate.</div>
 </footer>
+
+<script>
+    /* Deschide formularul la click pe buton (ca în versiunea ta originală) */
+    document.addEventListener('DOMContentLoaded', () => {
+        const start = document.getElementById('startContact');
+        const reveal = document.getElementById('contactReveal');
+        const card = document.getElementById('contactCard');
+        if(start && reveal){
+            start.addEventListener('click', () => {
+                reveal.classList.add('show');
+                reveal.setAttribute('aria-hidden', 'false');
+                card.classList.add('in');
+                start.setAttribute('aria-expanded', 'true');
+                card.scrollIntoView({behavior:'smooth', block:'start'});
+            });
+        }
+    });
+</script>
 </body>
 </html>

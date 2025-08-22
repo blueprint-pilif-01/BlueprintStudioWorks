@@ -1,0 +1,196 @@
+<!-- FILE: terms.html (White mode + Edge Blobs + Glass Legal) -->
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Termeni & Condiții — Blueprint Studio Works</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        body[data-page="legal"] .edge-blobs{ position:fixed; inset:0; pointer-events:none; z-index:-2 }
+        body[data-page="legal"] .e-blob{
+            position:absolute; aspect-ratio:1/1;
+            width: clamp(720px, 60vw, 1600px);
+            border-radius:58% 42% 64% 36% / 48% 62% 38% 52%;
+            background:
+                    radial-gradient(60% 60% at 30% 30%, rgba(0,208,255,.70), transparent 70%),
+                    radial-gradient(58% 58% at 70% 70%, rgba(122,92,255,.60), transparent 72%),
+                    radial-gradient(42% 42% at 50% 50%, rgba(255,122,217,.30), transparent 62%);
+            filter: blur(22px) saturate(120%);
+            opacity:.46;
+            animation: eDriftL 42s linear infinite, morphA 26s ease-in-out infinite alternate, colorShift 90s linear infinite;
+        }
+        body[data-page="legal"] .e1{ left:-28%; top:-8%; transform:scale(1.06) }
+        body[data-page="legal"] .e2{ right:-28%; bottom:-14%; transform:scale(1.04) }
+        @keyframes eDriftL{
+            0%{transform:translate3d(0,0,0)}
+            25%{transform:translate3d(3vw,-2vh,0)}
+            50%{transform:translate3d(0,3vh,0)}
+            75%{transform:translate3d(-3vw,-1vh,0)}
+            100%{transform:translate3d(0,0,0)}
+        }
+
+        .legal-hero{ position:relative; padding-top:40px }
+        .legal-title{ font-size:clamp(34px,5.5vw,64px); margin:0 0 8px; letter-spacing:-.02em }
+        .legal-meta{ color:#32405f; margin:0 0 18px; font-size:14px }
+
+        .legal-card{
+            position:relative; border-radius:22px; overflow:hidden;
+            background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.58));
+            border: 1px solid rgba(255,255,255,.55);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 18px 44px rgba(15,23,48,.14);
+            padding:20px; margin-top:14px; isolation:isolate; --mx:50%; --my:50%;
+        }
+        .legal-card::before{
+            content:""; position:absolute; inset:-25%; border-radius:inherit; pointer-events:none;
+            background:
+                    radial-gradient(200px 180px at var(--mx) var(--my), color-mix(in oklab, var(--c2) 55%, transparent) 0, transparent 60%),
+                    radial-gradient(260px 220px at calc(var(--mx) + 6%) calc(var(--my) + 10%), color-mix(in oklab, var(--c1) 45%, transparent) 0, transparent 72%),
+                    radial-gradient(220px 180px at calc(var(--mx) - 6%) calc(var(--my) - 6%), color-mix(in oklab, var(--c3) 35%, transparent) 0, transparent 68%);
+            filter: blur(18px) saturate(140%); mix-blend-mode: screen; opacity:.5;
+        }
+
+        .toc{ display:grid; gap:8px; margin:0; padding:0; list-style:none }
+        .toc a{ display:inline-flex; gap:8px; align-items:center }
+        .toc-bullet{ width:8px; height:8px; border-radius:999px; background:#17b6ff; flex:0 0 8px }
+
+        .legal h2{ margin:22px 0 8px; font-size:22px }
+        .legal h3{ margin:16px 0 6px; font-size:18px }
+        .legal p{ line-height:1.7 }
+        .legal ul{ padding-left:18px }
+        .legal li{ margin:6px 0 }
+        .note{ font-size:13px; color:#55607d }
+    </style>
+</head>
+<body data-page="legal">
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="edge-blobs" aria-hidden="true">
+    <div class="e-blob e1"></div>
+    <div class="e-blob e2"></div>
+</div>
+
+<header class="site-header">
+    <a class="brand" href="index.html" aria-label="Blueprint Studio Works">
+        <svg viewBox="0 0 180 40" class="brand-svg" role="img" aria-label="BSW">
+            <text x="0" y="28" class="brand-outline-light">BSW</text>
+        </svg>
+        <span class="brand-text-dark">Blueprint Studio Works</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigație principală">
+        <a href="portfolio.html" class="glass-btn sm">Portofoliu</a>
+        <a href="pricing.html" class="glass-btn sm">Pachete</a>
+        <a href="tracker.html" class="glass-btn sm">Site&nbsp;Tracker</a>
+        <a href="contact.html" class="glass-btn">Contact</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
+</header>
+
+<main class="contain legal-hero legal">
+    <h1 class="legal-title">Termeni & Condiții</h1>
+    <p class="legal-meta">Ultima actualizare: <time datetime="2025-08-22">22 aug 2025</time></p>
+
+    <section class="legal-card">
+        <h2>Cuprins</h2>
+        <ul class="toc">
+            <li><a href="#definitii"><span class="toc-bullet"></span>1. Definiții</a></li>
+            <li><a href="#acceptare"><span class="toc-bullet"></span>2. Acceptarea termenilor</a></li>
+            <li><a href="#servicii"><span class="toc-bullet"></span>3. Servicii & livrabile</a></li>
+            <li><a href="#preturi"><span class="toc-bullet"></span>4. Prețuri, plăți și facturare</a></li>
+            <li><a href="#drepturi"><span class="toc-bullet"></span>5. Drepturi de autor & licențe</a></li>
+            <li><a href="#confidentialitate"><span class="toc-bullet"></span>6. Confidențialitate</a></li>
+            <li><a href="#garantii"><span class="toc-bullet"></span>7. Garanții & limitări</a></li>
+            <li><a href="#suport"><span class="toc-bullet"></span>8. Suport & mentenanță</a></li>
+            <li><a href="#reziliere"><span class="toc-bullet"></span>9. Reziliere</a></li>
+            <li><a href="#lege"><span class="toc-bullet"></span>10. Legea aplicabilă</a></li>
+        </ul>
+    </section>
+
+    <section class="legal-card" id="definitii">
+        <h2>1. Definiții</h2>
+        <p>„Furnizor” – Blueprint Studio Works. „Client” – persoana fizică/juridică ce contractează servicii. „Servicii” – design, dezvoltare web, e-commerce, hosting și conexe.</p>
+    </section>
+
+    <section class="legal-card" id="acceptare">
+        <h2>2. Acceptarea termenilor</h2>
+        <p>Prin plasarea unei comenzi, semnarea unei oferte sau utilizarea site-ului, acceptați acești termeni. Furnizorul își rezervă dreptul de a actualiza documentul; versiunea curentă este publicată pe această pagină.</p>
+    </section>
+
+    <section class="legal-card" id="servicii">
+        <h2>3. Servicii & livrabile</h2>
+        <ul>
+            <li>Livrabilele (pagini, componente, asset-uri) sunt descrise în ofertă/brief aprobat.</li>
+            <li>Reviziile sunt limitate conform pachetului; modificările suplimentare se cotează separat.</li>
+            <li>Termenele depind de feedback-ul Clientului și de furnizarea materialelor (texte, imagini, acces).</li>
+        </ul>
+    </section>
+
+    <section class="legal-card" id="preturi">
+        <h2>4. Prețuri, plăți și facturare</h2>
+        <ul>
+            <li>Prețurile proiectelor sunt fixe per pachet; hostingul este recurent: <strong>€10/lună</strong>.</li>
+            <li>Plățile se efectuează conform ofertei (ex.: avans + tranșe). Neplata poate suspenda Serviciile.</li>
+            <li>Toate prețurile sunt în EUR și pot include taxe conform legislației în vigoare.</li>
+        </ul>
+    </section>
+
+    <section class="legal-card" id="drepturi">
+        <h2>5. Drepturi de autor & licențe</h2>
+        <p>Drepturile asupra livrabilelor sunt transferate Clientului după plata integrală. Bibliotecile terțe rămân sub licențele lor. Clientul garantează că are drepturile asupra materialelor furnizate.</p>
+    </section>
+
+    <section class="legal-card" id="confidentialitate">
+        <h2>6. Confidențialitate</h2>
+        <p>Părțile vor păstra confidențiale informațiile comerciale și tehnice primite. Politica de confidențialitate se aplică datelor cu caracter personal.</p>
+    </section>
+
+    <section class="legal-card" id="garantii">
+        <h2>7. Garanții & limitări</h2>
+        <ul>
+            <li>Se oferă remedierea bug-urilor critice identificate în perioada de garanție (definită în ofertă).</li>
+            <li>Furnizorul nu răspunde pentru întreruperi cauzate de servicii terțe (hosting, plăți, API-uri).</li>
+            <li>Răspunderea totală este limitată la valoarea sumelor plătite pentru Serviciul afectat.</li>
+        </ul>
+    </section>
+
+    <section class="legal-card" id="suport">
+        <h2>8. Suport & mentenanță</h2>
+        <p>Suportul post-lansare poate fi inclus în pachet sau contractat separat (SLA). Pentru hosting, sunt incluse SSL, backup zilnic și asistență de bază.</p>
+    </section>
+
+    <section class="legal-card" id="reziliere">
+        <h2>9. Reziliere</h2>
+        <p>Contractul poate fi reziliat pentru motive întemeiate (neplată, încălcarea obligațiilor). Abonamentele pot fi anulate din cont sau prin notificare scrisă cu 30 de zile înainte.</p>
+    </section>
+
+    <section class="legal-card" id="lege">
+        <h2>10. Legea aplicabilă</h2>
+        <p>Prezentul document este guvernat de legislația din România. Eventualele dispute se soluționează pe cale amiabilă sau de instanțele competente.</p>
+        <p class="note">Întrebări? <a href="contact.html">Contactează-ne</a>.</p>
+    </section>
+</main>
+
+<footer class="site-footer contain" style="margin-top:32px">
+    <div class="columns">
+        <div><div class="brand-min">BSW</div><p class="muted">Experiențe web care impresionează și vând.</p></div>
+        <div><h5>Pagini</h5><ul>
+            <li><a href="portfolio.html">Portofoliu</a></li>
+            <li><a href="pricing.html">Pachete</a></li>
+            <li><a href="tracker.html">Site Tracker</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul></div>
+        <div><h5>Legal</h5><ul>
+            <li><a href="terms.html">Termeni &amp; Condiții</a></li>
+            <li><a href="privacy.html">Politica de confidențialitate</a></li>
+        </ul></div>
+    </div>
+    <div class="copy muted">© <span id="year"></span> Blueprint Studio Works. Toate drepturile rezervate.</div>
+</footer>
+</body>
+</html>

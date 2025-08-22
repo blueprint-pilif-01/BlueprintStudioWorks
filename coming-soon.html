@@ -1,0 +1,79 @@
+<!-- FILE: coming-soon.html (Project placeholder — „site-ul acesta ar putea fi chiar al tău!”) -->
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coming soon — Blueprint Studio Works</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        body[data-page="soon"] .edge-blobs{position:fixed; inset:0; pointer-events:none; z-index:-2}
+        body[data-page="soon"] .e-blob{
+            position:absolute; aspect-ratio:1/1; width:clamp(780px,65vw,1700px);
+            border-radius:58% 42% 64% 36% / 48% 62% 38% 52%;
+            background:
+                    radial-gradient(60% 60% at 30% 30%, rgba(0,208,255,.70), transparent 70%),
+                    radial-gradient(58% 58% at 70% 70%, rgba(122,92,255,.60), transparent 72%),
+                    radial-gradient(42% 42% at 50% 50%, rgba(255,122,217,.30), transparent 62%);
+            filter:blur(22px) saturate(120%); opacity:.5;
+            animation: eDrift 42s linear infinite, morphA 26s ease-in-out infinite alternate, colorShift 90s linear infinite;
+        }
+        body[data-page="soon"] .e-left{left:-30%; top:-6%}
+        body[data-page="soon"] .e-right{right:-30%; bottom:-14%}
+        @keyframes eDrift{0%{transform:translate3d(0,0,0)}50%{transform:translate3d(2vw,-2vh,0)}100%{transform:translate3d(0,0,0)}}
+
+        .hero{min-height:calc(100dvh - 120px); display:grid; place-items:center}
+        .sheet{
+            width:min(92vw,860px);
+            background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.54));
+            border:1.5px solid rgba(255,255,255,.9); border-radius:24px; padding:28px;
+            backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+            box-shadow:0 30px 80px rgba(15,23,48,.12);
+            text-align:center;
+        }
+        .sheet h1{font-size:clamp(36px,6vw,64px); margin:0 0 8px; letter-spacing:-.02em}
+        .sheet p{color:#32405f; margin:0 0 16px}
+    </style>
+</head>
+<body data-page="soon">
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="edge-blobs" aria-hidden="true">
+    <div class="e-blob e-left"></div><div class="e-blob e-right"></div>
+</div>
+
+<header class="site-header">
+    <a class="brand" href="index.html" aria-label="Blueprint Studio Works">
+        <svg viewBox="0 0 180 40" class="brand-svg"><text x="0" y="28" class="brand-outline-light">BSW</text></svg>
+        <span class="brand-text-dark">Blueprint Studio Works</span>
+    </a>
+    <nav class="site-nav">
+        <a class="glass-btn sm" href="portfolio.html">Portofoliu</a>
+        <a class="glass-btn sm" href="pricing.html">Pachete</a>
+        <a class="glass-btn sm" href="tracker.html">Site&nbsp;Tracker</a>
+        <a class="glass-btn" href="contact.html">Contact</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
+</header>
+
+<main class="hero contain">
+    <div class="sheet">
+        <h1>Coming soon</h1>
+        <p>Site-ul acesta ar putea fi chiar al tău! Hai să-l construim împreună.</p>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap">
+            <a class="glass-btn lg" href="contact.html">Începe un proiect</a>
+            <a class="glass-btn" href="portfolio.html">Înapoi la portofoliu</a>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer contain">
+    <div class="copy muted">© <span id="year"></span> Blueprint Studio Works.</div>
+</footer>
+<script defer src="app.js"></script>
+</body>
+</html>

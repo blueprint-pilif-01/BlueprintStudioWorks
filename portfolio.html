@@ -1,4 +1,4 @@
-<!-- FILE: portfolio.html (White mode + edge blobs + glass UI) -->
+<!-- FILE: portfolio.html (Edge Blobs + Matte-Glass UI + Spinner + Preview Modal) -->
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -6,79 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portofoliu — Blueprint Studio Works</title>
 
+    <!-- Fonts + site styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="styles.css" />
-    <style>
-        /* ---------- Stiluri specifice paginii de portofoliu ---------- */
 
-        body[data-page="portfolio"] .edge-blobs{
-            position: fixed; inset: 0; pointer-events: none; z-index: -2;
-        }
-        /* === EDGE BLOBS – PORTOFOLIU (mai mari, doar pe margini) === */
-        body[data-page="portfolio"] .edge-blobs{
-            position: fixed; inset: 0; pointer-events: none; z-index: -2;
-        }
+    <style>
+        /* ---------- Edge blobs (mai mari, doar pe margini) ---------- */
+        body[data-page="portfolio"] .edge-blobs{position:fixed; inset:0; pointer-events:none; z-index:-2}
         body[data-page="portfolio"] .e-blob{
             position:absolute; aspect-ratio:1/1;
-            width: clamp(720px, 60vw, 1600px);               /* ← mai mare */
+            width:clamp(720px,60vw,1600px);
             border-radius:58% 42% 64% 36% / 48% 62% 38% 52%;
             background:
                     radial-gradient(60% 60% at 30% 30%, rgba(0,208,255,.70), transparent 70%),
                     radial-gradient(58% 58% at 70% 70%, rgba(122,92,255,.60), transparent 72%),
                     radial-gradient(42% 42% at 50% 50%, rgba(255,122,217,.30), transparent 62%);
-            filter: blur(22px) saturate(120%);               /* ← mai soft */
-            opacity: .48;
+            filter:blur(22px) saturate(120%); opacity:.48;
             animation: eDrift 40s linear infinite, morphA 26s ease-in-out infinite alternate, colorShift 90s linear infinite;
         }
-        body[data-page="portfolio"] .e-left  { left: -30%; top: -6%;  transform: scale(1.08) }
-        body[data-page="portfolio"] .e-right { right:-30%; bottom:-12%; transform: scale(1.04) }
-
+        body[data-page="portfolio"] .e-left{ left:-30%; top:-6%;  transform:scale(1.08) }
+        body[data-page="portfolio"] .e-right{ right:-30%; bottom:-12%; transform:scale(1.04) }
         @keyframes eDrift{
-            0%{ transform: translate3d(0,0,0) }
-            25%{ transform: translate3d(3vw,-2vh,0) }
-            50%{ transform: translate3d(0,3vh,0) }
-            75%{ transform: translate3d(-3vw,-1vh,0) }
-            100%{ transform: translate3d(0,0,0) }
+            0%{transform:translate3d(0,0,0)}
+            25%{transform:translate3d(3vw,-2vh,0)}
+            50%{transform:translate3d(0,3vh,0)}
+            75%{transform:translate3d(-3vw,-1vh,0)}
+            100%{transform:translate3d(0,0,0)}
         }
 
+        /* ---------- Hero & filtre ---------- */
+        .pf-hero{position:relative; padding-top:40px}
+        .pf-title{font-size:clamp(36px,5.6vw,72px); margin:0 0 8px; letter-spacing:-.02em}
+        .pf-kick{font-size:clamp(16px,1.6vw,20px); color:#32405f; margin:0 0 18px}
 
-        /* Hero */
-        .pf-hero{position:relative; padding-top: 40px}
-        .pf-title{font-size: clamp(36px,5.6vw,72px); margin: 0 0 8px; letter-spacing:-.02em}
-        .pf-kick{font-size: clamp(16px,1.6vw,20px); color:#32405f; margin: 0 0 18px}
-
-        /* Filter bar */
-        .filter-bar{display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px}
+        .filter-bar{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
         .chip{padding:10px 14px; border-radius:999px; cursor:pointer}
         .chip.is-active{box-shadow:0 10px 26px rgba(15,23,48,.16), inset 0 1px 0 rgba(255,255,255,.6)}
 
-        /* Grid de proiecte */
+        /* ---------- Grid & cards ---------- */
         .pf-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
         @media (max-width:980px){ .pf-grid{ grid-template-columns:1fr 1fr } }
         @media (max-width:640px){ .pf-grid{ grid-template-columns:1fr } }
 
         .p-card{
             position:relative; border-radius:18px; overflow:hidden;
-            background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.58));
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 12px 28px rgba(15,23,48,.12);
-            transition: transform .24s ease, box-shadow .24s ease;
-            isolation: isolate;
-            --mx:50%; --my:50%; /* pentru follow glow */
+            background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.58));
+            backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+            box-shadow:0 12px 28px rgba(15,23,48,.12);
+            transition:transform .24s ease, box-shadow .24s ease;
+            isolation:isolate;
+            --mx:50%; --my:50%;
         }
-        .p-card:hover{ transform: translateY(-6px) scale(1.02); box-shadow: 0 22px 46px rgba(15,23,48,.20) }
+        .p-card:hover{ transform:translateY(-6px) scale(1.02); box-shadow:0 22px 46px rgba(15,23,48,.20) }
 
         .p-thumb{ display:block; width:100%; height:220px; object-fit:cover }
+
         .p-meta{
             position:absolute; left:12px; bottom:12px; right:12px;
-            display:flex; align-items:center; justify-content:space-between;
-            gap:12px; padding:10px 12px; border-radius:14px;
-            background: linear-gradient(180deg, rgba(255,255,255,.70), rgba(255,255,255,.48));
-            border: 1px solid rgba(255,255,255,.55);
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            display:flex; align-items:center; justify-content:space-between; gap:12px;
+            padding:10px 12px; border-radius:14px;
+            background:linear-gradient(180deg,rgba(255,255,255,.70),rgba(255,255,255,.48));
+            border:1px solid rgba(255,255,255,.55);
+            backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
         }
         .p-title{font-weight:700; margin:0}
         .p-tags{font-size:13px; color:#55607d}
@@ -87,31 +78,92 @@
         .p-card::before{
             content:""; position:absolute; inset:-25%; border-radius:inherit; pointer-events:none;
             background:
-                    radial-gradient(180px 160px at var(--mx) var(--my),
-                    color-mix(in oklab, var(--c2) 55%, transparent) 0, transparent 60%),
-                    radial-gradient(240px 200px at calc(var(--mx) + 6%) calc(var(--my) + 10%),
-                    color-mix(in oklab, var(--c1) 45%, transparent) 0, transparent 72%),
-                    radial-gradient(200px 160px at calc(var(--mx) - 6%) calc(var(--my) - 6%),
-                    color-mix(in oklab, var(--c3) 35%, transparent) 0, transparent 68%);
-            filter: blur(18px) saturate(140%); mix-blend-mode: screen;
-            opacity: 0; transition: opacity .25s ease;
+                    radial-gradient(180px 160px at var(--mx) var(--my), color-mix(in oklab,var(--c2) 55%, transparent) 0, transparent 60%),
+                    radial-gradient(240px 200px at calc(var(--mx) + 6%) calc(var(--my) + 10%), color-mix(in oklab,var(--c1) 45%, transparent) 0, transparent 72%),
+                    radial-gradient(200px 160px at calc(var(--mx) - 6%) calc(var(--my) - 6%), color-mix(in oklab,var(--c3) 35%, transparent) 0, transparent 68%);
+            filter:blur(18px) saturate(140%); mix-blend-mode:screen;
+            opacity:0; transition:opacity .25s ease;
         }
-        .p-card:hover::before{ opacity: 1 }
+        .p-card:hover::before{ opacity:1 }
 
-        /* CTA de final */
-        .pf-cta{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-top:28px }
+        /* ---------- MATTE-GLASS SPINNER (fără mask/-webkit-mask) ---------- */
+        @property --ang { syntax:"<angle>"; inherits:false; initial-value:0deg; }
+        @keyframes spinAng { to { --ang: 360deg; } }
+
+        .p-loader{
+            position:absolute; left:0; right:0; top:0; height:220px;
+            display:grid; place-items:center; z-index:2;
+            opacity:0; transform:translateY(6px) scale(.98);
+            transition:opacity .25s ease, transform .25s ease;
+            pointer-events:none;
+        }
+        .p-card.loading .p-loader{ opacity:1; transform:none }
+
+        .p-loader .ring{
+            --ring-w:7px;
+            width:64px; height:64px; border-radius:50%;
+            border:var(--ring-w) solid transparent; /* rezervă pentru border-box */
+            background:
+                    linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,255,255,.18)) padding-box,
+                    conic-gradient(from var(--ang),
+                    color-mix(in oklab,var(--c1) 55%, transparent) 0 110deg,
+                    color-mix(in oklab,var(--c2) 55%, transparent) 110deg 230deg,
+                    color-mix(in oklab,var(--c3) 55%, transparent) 230deg 360deg) border-box;
+            background-clip:padding-box, border-box;
+            animation:spinAng 1.15s linear infinite;
+            filter:saturate(120%);
+            position:relative;
+        }
+        .p-loader .core{
+            position:absolute; width:46px; height:46px; border-radius:50%;
+            background:linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.44));
+            border:1px solid rgba(255,255,255,.60);
+            backdrop-filter:blur(12px) saturate(125%); -webkit-backdrop-filter:blur(12px) saturate(125%);
+            box-shadow:inset 0 1px 0 rgba(255,255,255,.65), 0 10px 24px rgba(15,23,48,.10);
+            overflow:hidden;
+        }
+        .p-loader .core::before,
+        .p-loader .core::after{
+            content:""; position:absolute; inset:-10% -10% -10% -10%; border-radius:50%;
+            background:
+                    radial-gradient(60% 60% at 30% 30%, color-mix(in oklab, var(--c1) 30%, transparent) 0, transparent 70%),
+                    radial-gradient(60% 60% at 70% 70%, color-mix(in oklab, var(--c2) 26%, transparent) 0, transparent 72%),
+                    radial-gradient(50% 50% at 50% 50%, color-mix(in oklab, var(--c3) 18%, transparent) 0, transparent 62%);
+            filter:blur(12px) saturate(120%); opacity:.55;
+        }
+        @keyframes micro-drift{0%{transform:translate3d(-2%,-2%,0) scale(1)}50%{transform:translate3d(2%,1.5%,0) scale(1.03)}100%{transform:translate3d(0,0,0) scale(1)}}
+        .p-loader .core::before{animation:micro-drift 2.2s ease-in-out infinite alternate}
+        .p-loader .core::after{animation:micro-drift 3s ease-in-out infinite alternate-reverse}
+
+        /* ---------- Preview modal (matte glass) ---------- */
+        .pm{position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+            background:rgba(15,23,48,.20); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+            z-index:999}
+        .pm.open{display:flex}
+        .pm__dialog{
+            width:min(96vw,1200px); height:min(86vh,820px); border-radius:22px; overflow:hidden;
+            background:linear-gradient(180deg,rgba(255,255,255,.80),rgba(255,255,255,.50));
+            border:1.5px solid rgba(255,255,255,.95);
+            box-shadow:0 30px 80px rgba(15,23,48,.22); position:relative; display:flex; flex-direction:column
+        }
+        .pm__close{
+            position:absolute; top:10px; right:10px; z-index:2; cursor:pointer;
+            border:none; border-radius:999px; padding:8px 10px; font-size:16px;
+            background:linear-gradient(180deg,rgba(255,255,255,.70),rgba(255,255,255,.40));
+            border:1px solid rgba(255,255,255,.75); box-shadow:0 6px 16px rgba(15,23,48,.12)
+        }
+        .pm__frame{width:100%; height:100%; border:0; background:#fff}
     </style>
-
-    <script defer src="app.js"></script>
 </head>
 <body data-page="portfolio">
+<!-- Grid subtil + edge blobs -->
 <div class="grid-bg" aria-hidden="true"></div>
-<!-- edge blobs (margini) -->
 <div class="edge-blobs" aria-hidden="true">
     <div class="e-blob e-left"></div>
     <div class="e-blob e-right"></div>
 </div>
 
+<!-- Header -->
 <header class="site-header">
     <a class="brand" href="index.html" aria-label="Blueprint Studio Works">
         <svg viewBox="0 0 180 40" class="brand-svg" role="img" aria-label="BSW">
@@ -130,95 +182,123 @@
     </button>
 </header>
 
+<!-- Conținut -->
 <main class="contain pf-hero">
     <h1 class="pf-title">Portofoliu</h1>
     <p class="pf-kick">Selecție de proiecte gândite pentru conversie, viteză și memorabilitate.</p>
 
     <div class="filter-bar" role="tablist" aria-label="Filtre portofoliu">
-        <button class="glass-btn chip is-active" role="tab" aria-selected="true">Toate</button>
-        <button class="glass-btn chip" role="tab">Landing</button>
-        <button class="glass-btn chip" role="tab">eCommerce</button>
-        <button class="glass-btn chip" role="tab">Brand</button>
+        <button class="glass-btn chip is-active" role="tab" data-filter="all" aria-selected="true">Toate</button>
+        <button class="glass-btn chip" role="tab" data-filter="landing">Landing</button>
+        <button class="glass-btn chip" role="tab" data-filter="ecom">eCommerce</button>
+        <button class="glass-btn chip" role="tab" data-filter="brand">Brand</button>
+        <button class="glass-btn chip" role="tab" data-filter="saas">SaaS</button>
     </div>
 
     <section class="pf-grid" style="margin-top:18px">
-        <!-- Exemplu card proiect -->
-        <article class="p-card">
-            <img class="p-thumb" src="https://picsum.photos/seed/alpha/1200/800" alt="Alpha Landing Page" loading="lazy">
+        <!-- Vertical -->
+        <article class="p-card loading" data-cat="brand landing">
+            <div class="p-loader" aria-hidden="true"><span class="ring"></span><span class="core"></span></div>
+            <img class="p-thumb" src="https://picsum.photos/seed/vertical-hero/1200/800" alt="Biserica Vertical" loading="lazy">
             <div class="p-meta">
                 <div>
-                    <h3 class="p-title">Alpha Landing</h3>
-                    <div class="p-tags">Landing • Copy & Design • Animations</div>
+                    <h3 class="p-title">Biserica Vertical</h3>
+                    <div class="p-tags">Prezentare • Program • Predici</div>
                 </div>
-                <a class="glass-btn sm" href="#" aria-label="Detalii Alpha">Detalii</a>
+                <div style="display:flex;gap:8px">
+                    <a class="glass-btn sm" href="vertical.html">Detalii</a>
+                </div>
             </div>
         </article>
 
-        <article class="p-card">
-            <img class="p-thumb" src="https://picsum.photos/seed/bravo/1200/800" alt="Bravo Shop" loading="lazy">
+        <!-- Timbox -->
+        <article class="p-card loading" data-cat="landing saas">
+            <div class="p-loader" aria-hidden="true"><span class="ring"></span><span class="core"></span></div>
+            <img class="p-thumb" src="https://picsum.photos/seed/timbox-hero/1200/800" alt="Timbox" loading="lazy">
             <div class="p-meta">
                 <div>
-                    <h3 class="p-title">Bravo Shop</h3>
-                    <div class="p-tags">eCommerce • UX • Perf 95+</div>
+                    <h3 class="p-title">Timbox</h3>
+                    <div class="p-tags">App • Landing • Pricing</div>
                 </div>
-                <a class="glass-btn sm" href="#" aria-label="Detalii Bravo">Detalii</a>
+                <div style="display:flex;gap:8px">
+                    <a class="glass-btn sm" href="timbox.html">Detalii</a>
+                </div>
             </div>
         </article>
 
-        <article class="p-card">
-            <img class="p-thumb" src="https://picsum.photos/seed/charlie/1200/800" alt="Charlie Brand Site" loading="lazy">
+        <!-- Coming soon #1 -->
+        <article class="p-card loading" data-cat="brand">
+            <div class="p-loader" aria-hidden="true"><span class="ring"></span><span class="core"></span></div>
+            <img class="p-thumb" src="https://picsum.photos/seed/soon-1/1200/800" alt="Coming soon" loading="lazy">
             <div class="p-meta">
                 <div>
-                    <h3 class="p-title">Charlie Brand</h3>
-                    <div class="p-tags">Brand • Motion • 3D hero</div>
+                    <h3 class="p-title">Coming soon</h3>
+                    <div class="p-tags">Site-ul acesta ar putea fi al tău!</div>
                 </div>
-                <a class="glass-btn sm" href="#" aria-label="Detalii Charlie">Detalii</a>
+                <div style="display:flex;gap:8px">
+                    <a class="glass-btn sm" href="coming-soon.html">Detalii</a>
+                </div>
             </div>
         </article>
 
-        <article class="p-card">
-            <img class="p-thumb" src="https://picsum.photos/seed/delta/1200/800" alt="Delta SaaS" loading="lazy">
+        <!-- Coming soon #2 -->
+        <article class="p-card loading" data-cat="ecom">
+            <div class="p-loader" aria-hidden="true"><span class="ring"></span><span class="core"></span></div>
+            <img class="p-thumb" src="https://picsum.photos/seed/soon-2/1200/800" alt="Coming soon" loading="lazy">
             <div class="p-meta">
                 <div>
-                    <h3 class="p-title">Delta SaaS</h3>
-                    <div class="p-tags">SaaS • Pricing • Onboarding</div>
+                    <h3 class="p-title">Coming soon</h3>
+                    <div class="p-tags">Site-ul acesta ar putea fi al tău!</div>
                 </div>
-                <a class="glass-btn sm" href="#" aria-label="Detalii Delta">Detalii</a>
+                <div style="display:flex;gap:8px">
+                    <a class="glass-btn sm" href="coming-soon.html">Detalii</a>
+                </div>
             </div>
         </article>
 
-        <article class="p-card">
-            <img class="p-thumb" src="https://picsum.photos/seed/echo/1200/800" alt="Echo Studio" loading="lazy">
+        <!-- Coming soon #2 -->
+        <article class="p-card loading" data-cat="ecom">
+            <div class="p-loader" aria-hidden="true"><span class="ring"></span><span class="core"></span></div>
+            <img class="p-thumb" src="https://picsum.photos/seed/soon-2/1200/800" alt="Coming soon" loading="lazy">
             <div class="p-meta">
                 <div>
-                    <h3 class="p-title">Echo Studio</h3>
-                    <div class="p-tags">Portfolio • WebGL • Light</div>
+                    <h3 class="p-title">Coming soon</h3>
+                    <div class="p-tags">Site-ul acesta ar putea fi al tău!</div>
                 </div>
-                <a class="glass-btn sm" href="#" aria-label="Detalii Echo">Detalii</a>
+                <div style="display:flex;gap:8px">
+                    <a class="glass-btn sm" href="coming-soon.html">Detalii</a>
+                </div>
             </div>
         </article>
 
-        <article class="p-card">
-            <img class="p-thumb" src="https://picsum.photos/seed/foxtrot/1200/800" alt="Foxtrot Events" loading="lazy">
+        <!-- Echo Studio -->
+        <article class="p-card loading" data-cat="ecom">
+            <div class="p-loader" aria-hidden="true"><span class="ring"></span><span class="core"></span></div>
+            <img class="p-thumb" src="https://picsum.photos/seed/soon-2/1200/800" alt="Coming soon" loading="lazy">
             <div class="p-meta">
                 <div>
-                    <h3 class="p-title">Foxtrot Events</h3>
-                    <div class="p-tags">Events • Ticketing • CMS</div>
+                    <h3 class="p-title">Coming soon</h3>
+                    <div class="p-tags">Site-ul acesta ar putea fi al tău!</div>
                 </div>
-                <a class="glass-btn sm" href="#" aria-label="Detalii Foxtrot">Detalii</a>
+                <div style="display:flex;gap:8px">
+                    <a class="glass-btn sm" href="coming-soon.html">Detalii</a>
+                </div>
             </div>
         </article>
     </section>
 
     <section class="pf-cta">
-        <h2 style="margin:0">Îți place direcția?</h2>
-        <div style="display:flex; gap:10px">
+        <p></p>
+        <h2 style="margin:0"> Îți place direcția?</h2>
+        <p></p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap">
             <a class="glass-btn lg" href="contact.html">Cere o ofertă</a>
             <a class="glass-btn" href="pricing.html">Vezi pachetele</a>
         </div>
     </section>
 </main>
 
+<!-- Footer -->
 <footer class="site-footer contain" style="margin-top:32px">
     <div class="columns">
         <div>
@@ -237,12 +317,71 @@
         <div>
             <h5>Legal</h5>
             <ul>
-                <li><a href="#">Termeni &amp; Condiții</a></li>
-                <li><a href="#">Politica de confidențialitate</a></li>
+                <li><a href="terms.html">Termeni &amp; Condiții</a></li>
+                <li><a href="privacy.html">Politica de confidențialitate</a></li>
             </ul>
         </div>
     </div>
     <div class="copy muted">© <span id="year"></span> Blueprint Studio Works. Toate drepturile rezervate.</div>
 </footer>
+
+<!-- Preview Modal -->
+<div id="previewModal" class="pm" aria-hidden="true">
+    <div class="pm__dialog">
+        <button class="pm__close" aria-label="Închide">✕</button>
+        <iframe class="pm__frame" src="" title="Previzualizare proiect"></iframe>
+    </div>
+</div>
+
+<!-- Page scripts (fără librării externe) -->
+<script>
+    // 1) Scoate .loading când imaginile s-au încărcat
+    document.querySelectorAll(".p-card img.p-thumb").forEach(img=>{
+        const done = () => img.closest(".p-card")?.classList.remove("loading");
+        if (img.complete) { done(); }
+        else { img.addEventListener("load", done, {once:true}); img.addEventListener("error", done, {once:true}); }
+    });
+
+    // 2) Follow-glow pe card (mută --mx/--my în CSS)
+    document.querySelectorAll(".p-card").forEach(card=>{
+        card.addEventListener("pointermove", (e)=>{
+            const r = card.getBoundingClientRect();
+            card.style.setProperty("--mx", (e.clientX - r.left)+"px");
+            card.style.setProperty("--my", (e.clientY - r.top)+"px");
+        });
+    });
+
+    // 3) Filtrare chip-uri
+    const chips = document.querySelectorAll(".chip");
+    chips.forEach(ch => ch.addEventListener("click", ()=>{
+        chips.forEach(c=>{c.classList.remove("is-active"); c.setAttribute("aria-selected","false");});
+        ch.classList.add("is-active"); ch.setAttribute("aria-selected","true");
+        const f = ch.dataset.filter;
+        document.querySelectorAll(".p-card").forEach(card=>{
+            if (f === "all") { card.style.display = ""; return; }
+            const cats = (card.getAttribute("data-cat")||"").split(" ");
+            card.style.display = cats.includes(f) ? "" : "none";
+        });
+    }));
+
+    // 4) Preview modal
+    const pm = document.getElementById("previewModal");
+    const frame = pm.querySelector(".pm__frame");
+    document.addEventListener("click", (e)=>{
+        const btn = e.target.closest(".js-preview");
+        if(btn){
+            frame.src = btn.getAttribute("data-preview");
+            pm.classList.add("open");
+            e.preventDefault();
+        }
+        if(e.target.closest(".pm__close") || e.target === pm){
+            pm.classList.remove("open"); frame.src = "";
+        }
+    });
+
+    // 5) Setează anul în footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<script defer src="app.js"></script>
 </body>
 </html>

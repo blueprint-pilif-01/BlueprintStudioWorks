@@ -422,3 +422,142 @@ document.addEventListener('DOMContentLoaded', () => {
     const opt = [...select.options].find(o => o.text.toLowerCase() === pkg.toLowerCase());
     if (opt){ select.value = opt.value; select.dispatchEvent(new Event('change',{bubbles:true})); }
 })();
+
+/* ===== Page Transition: fade + motion-blur on enter/leave ===== */
+(function pageTransitions(){
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    // creez overlay-ul; nu trebuie să-l pui în HTML
+    const fx = document.createElement('div');
+    fx.className = 'page-xfade';
+    fx.setAttribute('aria-hidden','true');
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.appendChild(fx);
+        // ENTRANCE: după un frame îl ascundem = fade-in către pagină
+        requestAnimationFrame(() => fx.classList.add('hide'));
+    });
+
+    const DURATION = 420; // ținut în sync cu --xfade-dur
+
+    // helper: e link intern și navigăm în același tab?
+    const isInternal = (a) => {
+        const url = new URL(a.href, location.href);
+        const sameOrigin = url.origin === location.origin;
+        const hashOnly   = url.pathname === location.pathname && url.hash && !url.search;
+        const newTab     = a.target === '_blank' || a.hasAttribute('download');
+        return sameOrigin && !hashOnly && !newTab;
+    };
+
+    // rulează OUTRO și apoi navighează
+    const go = (href) => {
+        fx.classList.remove('hide');               // arăt overlay-ul (fade-out pagina)
+        setTimeout(() => { location.href = href; }, DURATION - 20);
+    };
+
+    // Interceptăm clickurile pe linkuri
+    document.addEventListener('click', (e) => {
+        const a = e.target.closest('a[href]');
+        if (!a) return;
+        // lasă Ctrl/Meta pentru “deschide în tab nou”
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        if (!isInternal(a)) return;
+        e.preventDefault();
+        go(a.href);
+    });
+
+    // Interceptăm submit-urile de formulare (în același tab)
+    document.addEventListener('submit', (e) => {
+        const f = e.target;
+        if (f.target && f.target !== '_self') return;
+        // dacă ai un submit AJAX, poți elimina secțiunea asta
+        fx.classList.remove('hide');
+    }, true);
+
+    // La back/forward din bfcache: rulăm iar ENTER
+    window.addEventListener('pageshow', (e) => {
+        if (e.persisted) {
+            fx.classList.remove('hide'); // vizibil
+            requestAnimationFrame(() => fx.classList.add('hide')); // și se estompează
+        }
+    });
+
+    // “leaving site” (close/tab change) – încercăm un mic fade-out
+    window.addEventListener('pagehide', () => { fx.classList.remove('hide'); });
+})();
+
+(function dottedParallax(){
+    if (document.body.dataset.page !== 'home') return;
+    const tl = document.querySelector('.hero-blob .dots-tl');
+    const br = document.querySelector('.hero-blob .dots-br');
+    if (!tl || !br) return;
+
+    let y = 0;
+    const onScroll = () => {
+        const s = window.scrollY || 0;
+        // mișcări opuse, foarte mici
+        tl.style.transform = `translate3d(${s * 0.02}px, ${s * 0.03}px, 0)`;
+        br.style.transform = `translate3d(${-s * 0.02}px, ${-s * 0.03}px, 0)`;
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+})();
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".p-card img").forEach(img => {
+        if (img.complete) {
+            img.closest(".p-card").classList.remove("loading");
+        } else {
+            img.addEventListener("load", () => {
+                img.closest(".p-card").classList.remove("loading");
+            });
+            img.addEventListener("error", () => {
+                img.closest(".p-card").classList.remove("loading");
+            });
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mm = (q) => window.matchMedia && window.matchMedia(q).matches;
+
+    // Heuristici pentru mod "lite"
+    const isMobile = mm('(max-width: 768px)') || navigator.userAgent.toLowerCase().includes('mobile');
+    const saveData = (navigator.connection && navigator.connection.saveData) || false;
+    const dprHigh = window.devicePixelRatio && window.devicePixelRatio > 2.5; // ecrane foarte dense
+    const prefersReduce = mm('(prefers-reduced-motion: reduce)');
+
+    if (isMobile || saveData || dprHigh || prefersReduce) {
+        document.body.classList.add('is-lite');
+    }
+
+    // Evită listeners grele pe touch (ex. “follow glow” pe mouse)
+    const isCoarse = mm('(pointer: coarse)');
+    if (isCoarse) {
+        // Dacă ai cod de mousemove pentru glow-uri / trackere, oprește-l aici.
+        // Exemplu:
+        // window.removeEventListener('mousemove', handleMouseGlow, {passive:true});
+    }
+
+    // Pausăm animatiile când tab-ul pierde focus (free FPS & baterie)
+    const togglePause = () => {
+        if (document.hidden) document.body.classList.add('is-paused');
+        else document.body.classList.remove('is-paused');
+    };
+    document.addEventListener('visibilitychange', togglePause, { passive: true });
+
+    // (Opțional) încărcăm scena de blobs doar după prima interacțiune (reduce jank la load)
+    let blobsArmed = false;
+    const armBlobs = () => {
+        if (blobsArmed) return;
+        blobsArmed = true;
+        document.querySelector('.hero-blob')?.classList.add('ready'); // dacă folosești această clasă
+        window.removeEventListener('scroll', armBlobs);
+        window.removeEventListener('pointerdown', armBlobs);
+    };
+    window.addEventListener('scroll', armBlobs, { passive: true });
+    window.addEventListener('pointerdown', armBlobs, { passive: true });
+
+    // Siguranță: dacă nu există interacțiune, armăm oricum după 1.2s
+    setTimeout(armBlobs, 1200);
+});

@@ -17,6 +17,16 @@
 <!-- fundal deschis + grid subtil -->
 <div class="grid-bg" id="gridBg" aria-hidden="true"></div>
 
+<!-- DECOR: layers reutilizabile -->
+<div class="decor deco-dots" aria-hidden="true"></div>
+<div class="decor deco-lines" aria-hidden="true"></div>
+<div class="decor deco-orbs">
+    <span class="orb o1"></span>
+    <span class="orb o2"></span>
+    <span class="orb o3"></span>
+</div>
+<div class="decor deco-noise" aria-hidden="true"></div>
+
 <header class="site-header">
     <a class="brand" href="index.html" aria-label="Blueprint Studio Works">
         <svg viewBox="0 0 180 40" class="brand-svg" role="img" aria-label="BSW">
@@ -26,7 +36,6 @@
     </a>
 
     <nav class="site-nav" aria-label="Navigație principală">
-        <!-- nav ca butoane de sticlă (sm) -->
         <a href="portfolio.html" class="glass-btn sm" aria-label="Portofoliu">Portofoliu</a>
         <a href="pricing.html" class="glass-btn sm" aria-label="Pachete">Pachete</a>
         <a href="tracker.html" class="glass-btn sm" aria-label="Site Tracker">Site&nbsp;Tracker</a>
@@ -39,17 +48,19 @@
 </header>
 
 <main>
-    <!-- HERO: scenă de blobs mare + glass card -->
+    <!-- HERO -->
     <section class="hero-blob contain">
-        <!-- scenă blobs (acum ocupă mai mult ecranul) -->
         <div class="blob-stage" id="blobStage" aria-hidden="true">
             <div class="blob b1"></div>
             <div class="blob b2"></div>
             <div class="blob b3"></div>
             <div class="blob b4"></div>
+
+            <div class="dots dots-tl" aria-hidden="true"></div>
+            <div class="dots dots-br" aria-hidden="true"></div>
+
         </div>
 
-        <!-- card de sticlă -->
         <div class="glass" role="region" aria-label="Intro">
             <h1 id="headline" aria-label="Vrei un site care aduce clienți? Design curat. Animații fluide? Motion precis.">
                 <span class="line">Vrei un site care aduce clienți?</span>
@@ -69,7 +80,6 @@
         <div class="scroll-hint light" aria-hidden="true"><span></span></div>
     </section>
 
-    <!-- 3 highlights -->
     <section class="mini-highlights contain" aria-label="De ce BSW">
         <div class="mini">
             <h3>Claritate</h3>
@@ -104,15 +114,16 @@
         <div>
             <h5>Legal</h5>
             <ul>
-                <li><a href="#">Termeni &amp; Condiții</a></li>
-                <li><a href="#">Politica de confidențialitate</a></li>
+                <!-- === MODIFICAT: link-uri către paginile reale === -->
+                <li><a href="terms.html">Termeni &amp; Condiții</a></li>
+                <li><a href="privacy.html">Politica de confidențialitate</a></li>
             </ul>
         </div>
     </div>
     <div class="copy muted">© <span id="year"></span> Blueprint Studio Works. Toate drepturile rezervate.</div>
 </footer>
 
-<!-- Dock de iconițe (demonstrație butoane rotunde de sticlă) -->
+<!-- Dock de iconițe -->
 <div style="position:fixed; right:22px; bottom:22px; display:flex; gap:14px; z-index:20" aria-label="Acțiuni rapide">
     <a class="glass-icon" href="index.html" aria-label="Acasă">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">

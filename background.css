@@ -1,0 +1,65 @@
+:root {
+    --c1: #5A7DFF;
+    --c2: #FF5A95;
+    --c3: #7DFFB5;
+    --c4: #FFD85A;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== BLOBS ===== */
+.blob-stage {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: blobMove 20s infinite ease-in-out alternate;
+}
+
+.b1 { width: 60vmax; height: 60vmax; top: -20vmax; left: -20vmax; background: var(--c1); }
+.b2 { width: 50vmax; height: 50vmax; bottom: -15vmax; right: -10vmax; background: var(--c2); animation-delay: 5s; }
+.b3 { width: 40vmax; height: 40vmax; top: 20%; left: 50%; background: var(--c3); animation-delay: 10s; }
+.b4 { width: 55vmax; height: 55vmax; bottom: 0; left: 30%; background: var(--c4); animation-delay: 15s; }
+
+@keyframes blobMove {
+    0%   { transform: translate(0,0) scale(1); }
+    25%  { transform: translate(5%, -5%) scale(1.1); }
+    50%  { transform: translate(-5%, 5%) scale(0.9); }
+    75%  { transform: translate(10%, 10%) scale(1.2); }
+    100% { transform: translate(-10%, -10%) scale(1); }
+}
+
+/* ===== DOTS ===== */
+.dots {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background-image: radial-gradient(#000 2px, transparent 2px);
+    background-size: 20px 20px;
+    opacity: 0.15;
+}
+
+.dots.top-left { top: 20px; left: 20px; }
+.dots.bottom-right { bottom: 20px; right: 20px; }
+
+/* mai vizibil pe mobil */
+@media (max-width: 768px) {
+    .blob {
+        width: 90vmax !important;
+        height: 90vmax !important;
+        opacity: 0.65;
+    }
+}
