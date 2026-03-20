@@ -1,0 +1,42 @@
+# Blueprint Studio Works - Robots.txt
+# https://blueprintstudioworks.ro
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://blueprintstudioworks.ro/sitemap.xml
+
+# Optimal crawl rate
+Crawl-delay: 1
+
+# Disallow admin or private paths (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+

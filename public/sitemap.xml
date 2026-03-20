@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://blueprintstudioworks.ro/</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://blueprintstudioworks.ro/about</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Portfolio Page -->
+  <url>
+    <loc>https://blueprintstudioworks.ro/portfolio</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Portfolio Projects -->
+  <url>
+    <loc>https://blueprintstudioworks.ro/divine</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://blueprintstudioworks.ro/ruethis</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://blueprintstudioworks.ro/xmet</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://blueprintstudioworks.ro/carmina</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://blueprintstudioworks.ro/selectrik</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://blueprintstudioworks.ro/biserica</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Pricing Page -->
+  <url>
+    <loc>https://blueprintstudioworks.ro/pricing</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Contact Page -->
+  <url>
+    <loc>https://blueprintstudioworks.ro/contact</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Tracker Page -->
+  <url>
+    <loc>https://blueprintstudioworks.ro/tracker</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Privacy & Terms -->
+  <url>
+    <loc>https://blueprintstudioworks.ro/privacy</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://blueprintstudioworks.ro/terms</loc>
+    <lastmod>2025-11-07T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

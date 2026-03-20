@@ -1,0 +1,665 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+:root {
+    --pad: clamp(16px,2vw,28px);
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+    /* Optimizări pentru smooth scrolling */
+    overscroll-behavior: none;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  body {
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f7fb;
+    color: #0f1730;
+    line-height: 1.6;
+    /* Optimizări pentru performanță */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  /* Custom smooth scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+@layer components {
+  /* Glass effect utilities */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+  }
+  
+  .glass-button {
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    transition: all 0.2s ease;
+  }
+  
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.24);
+  }
+  
+  /* Modern button styles */
+  .btn-glass {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm;
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    @apply hover:scale-105 hover:-translate-y-1;
+    @apply transition-all duration-200 ease-out;
+    @apply shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-glass:hover {
+    background: rgba(255, 255, 255, 0.24);
+  }
+  
+  .btn-glass-lg {
+    @apply px-8 py-4 text-base;
+  }
+  
+  .btn-glass-sm {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  /* Card styles */
+  .card-glass {
+    @apply relative rounded-3xl overflow-hidden;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    @apply shadow-2xl hover:shadow-3xl;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:-translate-y-2 hover:scale-[1.02];
+  }
+  
+  /* Input styles */
+  .input-glass {
+    @apply w-full rounded-2xl px-4 py-3 border-none outline-none;
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(6px);
+    @apply placeholder:text-muted text-foreground;
+    @apply transition-all duration-200;
+  }
+  
+  .input-glass:focus {
+    background: rgba(255, 255, 255, 0.7);
+    @apply ring-2 ring-blue-500 ring-opacity-50;
+  }
+  
+  /* Grid background */
+  .grid-bg {
+    @apply fixed inset-0 -z-10;
+    opacity: 0.35;
+    background: 
+      linear-gradient(transparent 0, rgba(15,23,48,.05) 1px, transparent 1px) 0 0/ 100% 36px,
+      linear-gradient(90deg, transparent 0, rgba(15,23,48,.05) 1px, transparent 1px) 0 0/ 36px 100%;
+  }
+  
+  /* HERO + Blobs - Enhanced with better positioning and smoother animations */
+  .blob-stage {
+    position: absolute; 
+    inset: -15% -5% -15% -5%; 
+    pointer-events: none; 
+    z-index: -2; 
+    filter: saturate(130%);
+    /* Optimizări performanță */
+    will-change: transform;
+    transform: translateZ(0);
+    /* Smooth entrance animation */
+    opacity: 0;
+    animation: fadeInBlobs 2s ease-out forwards;
+  }
+  
+  .blob {
+    position: absolute; 
+    width: clamp(380px,45vw,900px); 
+    aspect-ratio: 1/1;
+    border-radius: 58% 42% 64% 36% / 48% 62% 38% 52%;
+    background:
+      /* Background simplificat pentru performanță */
+      radial-gradient(65% 65% at 25% 25%, rgba(0,208,255,.8), transparent 65%),
+      radial-gradient(60% 60% at 75% 75%, rgba(122,92,255,.7), transparent 70%),
+      radial-gradient(45% 45% at 50% 50%, rgba(255,122,217,.5), transparent 60%);
+    filter: blur(16px) saturate(120%); 
+    box-shadow: 0 30px 120px rgba(15,23,48,.15);
+    /* Animații simplificate pentru performanță */
+    animation: 
+      drift 40s cubic-bezier(0.4, 0, 0.6, 1) infinite, 
+      morphing 30s ease-in-out infinite;
+    /* Optimizări critice pentru performanță GPU */
+    will-change: transform;
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+    contain: layout style paint;
+    isolation: isolate;
+    animation-fill-mode: both;
+    /* Forțează accelerarea hardware */
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+  }
+  
+  /* Pseudo-element eliminat pentru performanță - efectul se păstrează prin background-ul principal */
+  
+  /* Hero page blobs - simplified for performance */
+  .b1 {
+    left: 20%; 
+    top: 10%; 
+    transform: scale(1.1); 
+    animation: 
+      drift 45s cubic-bezier(0.4, 0, 0.6, 1) infinite, 
+      morphingA 35s ease-in-out infinite;
+  }
+  
+  .b2 {
+    right: 20%; 
+    top: 15%; 
+    transform: scale(.95);  
+    animation: 
+      driftB 50s cubic-bezier(0.4, 0, 0.6, 1) infinite,
+      morphingB 40s ease-in-out infinite reverse;
+  }
+  
+  .b3 {
+    left: 25%; 
+    bottom: 5%; 
+    transform: scale(1.2); 
+    animation: 
+      driftC 55s cubic-bezier(0.4, 0, 0.6, 1) infinite, 
+      morphingC 45s ease-in-out infinite;
+  }
+  
+  .b4 {
+    right: 25%; 
+    bottom: 10%; 
+    transform: scale(.8); 
+    animation: 
+      driftD 60s cubic-bezier(0.4, 0, 0.6, 1) infinite,
+      morphingD 50s ease-in-out infinite reverse;
+  }
+  
+  /* Interactive blob effects - optimized for performance */
+  .interactive-blob {
+    transition: transform 0.2s ease-out;
+  }
+  
+  .interactive-blob:hover {
+    transform: scale(1.05) !important;
+  }
+  
+  /* Mouse follow effect for hero blobs - simplified for better performance */
+  .blob-stage:hover .b1 {
+    transform: translate3d(
+      calc((var(--mouse-x, 50) - 50) * 0.01), 
+      calc((var(--mouse-y, 50) - 50) * 0.01), 
+      0
+    ) scale(1.1);
+  }
+  
+  .blob-stage:hover .b2 {
+    transform: translate3d(
+      calc((var(--mouse-x, 50) - 50) * -0.015), 
+      calc((var(--mouse-y, 50) - 50) * 0.01), 
+      0
+    ) scale(.95);
+  }
+  
+  .blob-stage:hover .b3 {
+    transform: translate3d(
+      calc((var(--mouse-x, 50) - 50) * 0.012), 
+      calc((var(--mouse-y, 50) - 50) * -0.015), 
+      0
+    ) scale(1.2);
+  }
+  
+  .blob-stage:hover .b4 {
+    transform: translate3d(
+      calc((var(--mouse-x, 50) - 50) * -0.01), 
+      calc((var(--mouse-y, 50) - 50) * -0.012), 
+      0
+    ) scale(.8);
+  }
+  
+  /* Low performance optimizations - minimal but visible */
+  .low-performance .blob {
+    filter: blur(12px) saturate(110%) !important;
+    animation-duration: 60s !important;
+    will-change: auto !important;
+  }
+  
+  .low-performance .b1 {
+    animation: drift 60s linear infinite !important;
+  }
+  
+  .low-performance .b2 {
+    animation: driftB 65s linear infinite !important;
+  }
+  
+  .low-performance .b3 {
+    animation: driftC 70s linear infinite !important;
+  }
+  
+  .low-performance .b4 {
+    animation: driftD 75s linear infinite !important;
+  }
+
+  /* Edge blobs for other pages */
+  .blob-stage-edge {
+    position: absolute; 
+    inset: -10% -5% -10% -5%; 
+    pointer-events: none; 
+    z-index: -2; 
+    filter: saturate(120%);
+    will-change: transform;
+    transform: translateZ(0);
+    /* Smooth entrance animation */
+    opacity: 0;
+    animation: fadeInBlobs 1.5s ease-out forwards;
+  }
+  
+  .blob-edge-left {
+    left: -15%; 
+    top: 20%; 
+    transform: scale(0.8); 
+    animation: driftB 45s linear infinite;
+  }
+  
+  .blob-edge-right {
+    right: -15%; 
+    bottom: 20%; 
+    transform: scale(0.9);  
+    animation: driftC 50s linear infinite;
+  }
+  
+  /* Dotted design elements */
+  .dots {
+    position: absolute; 
+    z-index: -1;
+    pointer-events: none;
+    width: clamp(140px, 18vw, 260px);
+    height: clamp(140px, 18vw, 260px);
+    --gap: 16px;
+    --size: 3px;
+    --dot: rgba(15,23,48,.65);
+    background-image: radial-gradient(circle at center, var(--dot) var(--size), transparent calc(var(--size) + 1px));
+    background-size: var(--gap) var(--gap);
+    background-position: 0 0;
+  border-radius: 8px;
+    opacity: .55;
+    transform: translateZ(0);
+  }
+  
+  .dots-tl { 
+    top: var(--pad); 
+    left: var(--pad); 
+  }
+  
+  .dots-br { 
+    right: var(--pad); 
+    bottom: var(--pad); 
+  }
+  
+  @media (max-width: 720px) {
+    .dots { 
+      display: none; 
+    }
+  }
+  
+  /* Scroll hint */
+  .scroll-hint {
+    @apply absolute left-6 bottom-6 opacity-60;
+  }
+  
+  .scroll-hint span {
+    @apply block w-6 h-9 border-2 border-foreground/30 rounded-xl relative;
+  }
+  
+  .scroll-hint span::after {
+    content: '';
+    @apply absolute left-1/2 top-1.5 transform -translate-x-1/2 w-1 h-2 bg-foreground rounded-full;
+    animation: scroll-wheel 1.6s ease-in-out infinite;
+  }
+  
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+    @apply rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    @apply rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500 bg-clip-text text-transparent;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 md:px-8;
+  }
+}
+
+/* Custom keyframes */
+@keyframes scroll-wheel {
+  0% { transform: translate(-50%, 0); }
+  60% { transform: translate(-50%, 12px); }
+  100% { transform: translate(-50%, 0); }
+}
+
+/* Blob animations - simplified for better performance */
+@keyframes drift {
+  0% { transform: translate3d(0,0,0) scale(1.1); }
+  25% { transform: translate3d(3vw,-2vh,0) scale(1.15); }
+  50% { transform: translate3d(-2vw,3vh,0) scale(1.2); }
+  75% { transform: translate3d(-3vw,-1vh,0) scale(1.05); }
+  100% { transform: translate3d(0,0,0) scale(1.1); }
+}
+
+@keyframes driftB {
+  0% { transform: translate3d(0,0,0) scale(.95); }
+  33% { transform: translate3d(-3vw,2vh,0) scale(1.05); }
+  66% { transform: translate3d(2vw,-2vh,0) scale(1.0); }
+  100% { transform: translate3d(0,0,0) scale(.95); }
+}
+
+@keyframes driftC {
+  0% { transform: translate3d(0,0,0) scale(1.2); }
+  33% { transform: translate3d(2vw,2vh,0) scale(1.25); }
+  66% { transform: translate3d(-2vw,-2vh,0) scale(1.15); }
+  100% { transform: translate3d(0,0,0) scale(1.2); }
+}
+
+@keyframes driftD {
+  0% { transform: translate3d(0,0,0) scale(.8); }
+  50% { transform: translate3d(-2vw,2vh,0) scale(.85); }
+  100% { transform: translate3d(0,0,0) scale(.8); }
+}
+
+/* Simplified morphing animations for better performance */
+@keyframes morphingA {
+  0% { border-radius: 58% 42% 64% 36% / 48% 62% 38% 52%; }
+  50% { border-radius: 35% 65% 45% 55% / 70% 30% 60% 40%; }
+  100% { border-radius: 58% 42% 64% 36% / 48% 62% 38% 52%; }
+}
+
+@keyframes morphingB {
+  0% { border-radius: 42% 58% 36% 64% / 62% 38% 52% 48%; }
+  50% { border-radius: 75% 25% 85% 15% / 25% 75% 15% 85%; }
+  100% { border-radius: 42% 58% 36% 64% / 62% 38% 52% 48%; }
+}
+
+@keyframes morphingC {
+  0% { border-radius: 64% 36% 58% 42% / 38% 52% 48% 62%; }
+  50% { border-radius: 20% 80% 30% 70% / 85% 15% 75% 25%; }
+  100% { border-radius: 64% 36% 58% 42% / 38% 52% 48% 62%; }
+}
+
+@keyframes morphingD {
+  0% { border-radius: 50% 40% 60% 50% / 45% 55% 35% 65%; }
+  50% { border-radius: 85% 15% 95% 5% / 20% 80% 10% 90%; }
+  100% { border-radius: 50% 40% 60% 50% / 45% 55% 35% 65%; }
+}
+
+/* Breathing animation removed for better performance */
+
+@keyframes colorShift {
+  0% { filter: blur(16px) saturate(120%) hue-rotate(0deg); }
+  50% { filter: blur(16px) saturate(130%) hue-rotate(180deg); }
+  100% { filter: blur(16px) saturate(120%) hue-rotate(360deg); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes morphA {
+  0% { border-radius: 58% 42% 64% 36% / 48% 62% 38% 52%; }
+  100% { border-radius: 42% 58% 36% 64% / 62% 38% 52% 48%; }
+}
+
+@keyframes morphB {
+  0% { border-radius: 42% 58% 36% 64% / 62% 38% 52% 48%; }
+  100% { border-radius: 64% 36% 58% 42% / 38% 52% 48% 62%; }
+}
+
+@keyframes morphC {
+  0% { border-radius: 64% 36% 58% 42% / 38% 52% 48% 62%; }
+  100% { border-radius: 50% 40% 60% 50% / 45% 55% 35% 65%; }
+}
+
+@keyframes morphD {
+  0% { border-radius: 45% 55% 35% 65% / 50% 40% 60% 50%; }
+  100% { border-radius: 58% 42% 64% 36% / 48% 62% 38% 52%; }
+}
+
+/* Page Transitions - exact replica from original CSS */
+  :root {
+  --xfade-dur: 600ms;
+  --xfade-ease: cubic-bezier(.2,.9,.15,1);
+}
+
+.page-xfade {
+  position: fixed; 
+  inset: 0; 
+  z-index: 9999; 
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.78) 55%, rgba(255,255,255,.72)),
+    radial-gradient(90% 80% at 0% 0%, color-mix(in oklab, #00d0ff 22%, transparent), transparent 60%),
+    radial-gradient(100% 85% at 100% 100%, color-mix(in oklab, #ff7ad9 18%, transparent), transparent 60%),
+    radial-gradient(120% 100% at 100% 0%, color-mix(in oklab, #7a5cff 16%, transparent), transparent 65%);
+  backdrop-filter: blur(20px) saturate(140%) brightness(1.05);
+  -webkit-backdrop-filter: blur(20px) saturate(140%) brightness(1.05);
+  transform: translateY(14px) scale(1.03) rotate(.6deg);
+  opacity: 1;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.55),
+    inset 0 -80px 160px rgba(15,23,48,.10),
+    inset 0  80px 160px rgba(15,23,48,.06);
+  transition:
+    opacity var(--xfade-dur) var(--xfade-ease),
+    transform var(--xfade-dur) var(--xfade-ease);
+}
+
+.page-xfade::before {
+  content: "";
+  position: absolute; 
+  inset: -12% -35%;
+  background:
+    linear-gradient(115deg,
+      transparent 0 24%,
+      color-mix(in oklab, #00d0ff 42%, transparent) 36% 45%,
+      color-mix(in oklab, #7a5cff 34%, transparent) 47% 60%,
+      color-mix(in oklab, #ff7ad9 28%, transparent) 62% 70%,
+      transparent 80% 100%);
+  filter: blur(50px) saturate(150%);
+  mix-blend-mode: screen;
+  transform: translateX(-60%);
+  animation: xfade-sweep 900ms ease-in-out infinite;
+  opacity: .9;
+}
+
+.page-xfade::after {
+  content: "";
+  position: absolute; 
+  inset: 0;
+  background: radial-gradient(100% 100% at 50% 50%, transparent 60%, rgba(15,23,48,.12) 100%);
+  pointer-events: none;
+}
+
+.page-xfade.hide {
+  opacity: 0;
+  transform: none;
+}
+
+@keyframes xfade-sweep {
+  from { transform: translateX(-60%); }
+  to { transform: translateX(60%); }
+}
+
+@keyframes fadeInBlobs {
+  0% { 
+    opacity: 0; 
+    transform: translateZ(0) scale(0.8); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateZ(0) scale(1); 
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-xfade,
+  .page-xfade::before,
+  .page-xfade::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 0 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Optimizări permanente pentru performanță fără să afecteze vizualul */
+
+/* Pause animations when tab is in background */
+body.is-paused * {
+  animation-play-state: paused !important;
+}
+
+/* Mobile optimizations - simplified for performance */
+@media (max-width: 768px) {
+  .blob-stage {
+    position: fixed !important;
+    inset: -30% -20% -30% -20% !important;
+    z-index: -2;
+    transform: translateZ(0);
+  }
+  
+  .blob.b3, .blob.b4 { 
+    display: block !important; 
+    opacity: 0.5 !important;
+  }
+
+  .blob {
+    width: 45vmax !important;
+    filter: blur(30px) saturate(120%) !important;
+    opacity: .5 !important;
+    animation-duration: 80s !important;
+  }
+  
+  .b1 {
+    left: 15% !important;
+    top: 5% !important;
+    transform: scale(1.1) !important;
+    animation: drift 80s linear infinite !important;
+  }
+  
+  .b2 {
+    right: 15% !important;
+    top: 10% !important;
+    transform: scale(0.9) !important;
+    animation: driftB 85s linear infinite !important;
+  }
+  
+  .b3 {
+    left: 20% !important;
+    bottom: 0% !important;
+    transform: scale(1.2) !important;
+    animation: driftC 90s linear infinite !important;
+  }
+  
+  .b4 {
+    right: 20% !important;
+    bottom: 5% !important;
+    transform: scale(0.8) !important;
+    animation: driftD 95s linear infinite !important;
+  }
+}
+
+@keyframes bubbles {
+  from { transform: translateX(-25%); }
+  to { transform: translateX(0%); }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    box-shadow: 
+      0 0 18px color-mix(in oklab, rgb(0 208 255) 55%, transparent),
+      0 0 36px color-mix(in oklab, rgb(0 208 255) 28%, transparent);
+  }
+  50% { 
+    box-shadow: 
+      0 0 30px color-mix(in oklab, rgb(0 208 255) 75%, transparent),
+      0 0 66px color-mix(in oklab, rgb(0 208 255) 38%, transparent);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

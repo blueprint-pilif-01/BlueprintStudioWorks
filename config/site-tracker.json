@@ -1,0 +1,128 @@
+{
+  "sites": [
+    {
+      "name": "IMBRomania",
+      "slug": "imbromania",
+      "codes": ["imbDelia"],
+      "sourceDir": "../IMBRomania/dist",
+      "todos": [
+        {
+          "id": "imb-hero-copy",
+          "title": "Clarifică mesajul și CTA-ul din hero",
+          "description": "Subliniază bursele și campusurile disponibile chiar în primul ecran.",
+          "priority": "high",
+          "status": "in-progress",
+          "tags": ["copywriting", "hero"]
+        },
+        {
+          "id": "imb-admissions-timeline",
+          "title": "Cronologie interactivă pentru înscrieri",
+          "description": "Arată cele 4 ferestre de înscriere cu termene limită și invitație la tur de campus.",
+          "priority": "medium",
+          "status": "todo",
+          "tags": ["ux", "component"]
+        },
+        {
+          "id": "imb-alumni-slider",
+          "title": "Slider cu absolvenți și testimoniale",
+          "description": "Prezintă 3-4 ținute realizate de absolvenți cu citate înainte de secțiunea de prețuri.",
+          "priority": "medium",
+          "status": "todo",
+          "tags": ["content", "social-proof"]
+        }
+      ]
+    },
+    {
+      "name": "TermotalTM",
+      "slug": "termotaltm",
+      "codes": ["MarianBilaucaTermotal"],
+      "sourceDir": "../TermotalTM/dist",
+      "todos": [
+        {
+          "id": "termotal-service-icons",
+          "title": "Update service cards with new icons",
+          "description": "HVAC, pompe de căldură și mentenanță trebuie diferențiate vizual.",
+          "priority": "high",
+          "status": "in-progress",
+          "tags": ["ui", "branding"]
+        },
+        {
+          "id": "termotal-case-studies",
+          "title": "Add industrial case studies",
+          "description": "2 proiecte finalizate în Timișoara + Lugoj cu foto și cifre de economie.",
+          "priority": "medium",
+          "status": "todo",
+          "tags": ["content", "b2b"]
+        },
+        {
+          "id": "termotal-quote-form",
+          "title": "Quote form with equipment selector",
+          "description": "Formularul trebuie să ceară suprafață, tip clădire și termenul dorit.",
+          "priority": "medium",
+          "status": "todo",
+          "tags": ["form", "lead-gen"]
+        }
+      ]
+    },
+    {
+      "name": "iHop TM",
+      "slug": "ihoptm",
+      "codes": ["iHOPTm"],
+      "sourceDir": "../iHop TM/dist",
+      "todos": [
+        {
+          "id": "ihop-hero-video",
+          "title": "Video loop filmat în locație",
+          "description": "Înlocuiește imaginea din hero cu un clip scurt din locația din Timișoara.",
+          "priority": "medium",
+          "status": "in-progress",
+          "tags": ["media", "hero"]
+        },
+        {
+          "id": "ihop-menu-gallery",
+          "title": "Galerie foto pentru meniul brunch",
+          "description": "Adaugă 6 imagini (pancakes, burgers, cafea) optimizate sub 400kb.",
+          "priority": "high",
+          "status": "todo",
+          "tags": ["content", "gallery"]
+        },
+        {
+          "id": "ihop-location-cta",
+          "title": "CTA sticky pentru rezervări",
+          "description": "Buton \"Sună acum\" + link Google Maps mereu vizibil pe mobil.",
+          "priority": "medium",
+          "status": "todo",
+          "tags": ["ux", "cta"]
+        }
+      ]
+    },
+    {
+      "name": "D&D Character Sheet",
+      "slug": "dndcharactersheet",
+      "codes": ["DNDCharacter"],
+      "sourceDir": "../DNDCharacterSheet/dist",
+      "todos": []
+    },
+    {
+      "name": "Garmendi",
+      "slug": "garmendi",
+      "codes": ["garmendiShopping"],
+      "sourceDir": "../Garmendi/dist",
+      "todos": []
+    },
+    {
+      "name": "AloraBright",
+      "slug": "alorabright",
+      "codes": ["alorasite"],
+      "sourceDir": "../AloraBright/dist",
+      "todos": []
+    },
+    {
+      "name": "AlphaPixels",
+      "slug": "alphapixels",
+      "codes": ["pixelsalpha"],
+      "sourceDir": "../AlphaPixels/alphapixels-site/dist",
+      "todos": []
+    }
+  ]
+}
