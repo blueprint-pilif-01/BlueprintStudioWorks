@@ -1,6 +1,5 @@
 import { motion } from "framer-motion"
 import { 
-  Code2, 
   Palette, 
   Zap, 
   Globe, 
@@ -210,20 +209,20 @@ export function AboutPage() {
           <Card className="glass rounded-3xl shadow-2xl overflow-hidden">
             <CardContent className="p-4 sm:p-6 md:p-8 lg:p-12">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                {/* Photo Placeholder */}
+                {/* Profile Photo */}
                 <motion.div
                   className="flex justify-center md:col-span-1"
                   whileHover={{ scale: 1.05, rotate: 2 }}
                   transition={{ duration: 0.3 }}
                 >
                   <div className="w-48 h-48 md:w-64 md:h-64 rounded-3xl bg-gradient-to-br from-primary-500/20 to-secondary-500/20 border-4 border-white/50 shadow-2xl flex items-center justify-center overflow-hidden">
-                    <div className="text-center">
-                      <Code2 className="w-16 h-16 text-primary-500 mx-auto mb-2" />
-                      <p className="text-sm text-muted font-semibold">
-                        {translate({ ro: "Poza ta aici", en: "Your photo here" })}
-                      </p>
-                      <p className="text-xs text-muted/70">Filip Bulc</p>
-                    </div>
+                    <img
+                      src="/pozapilif.png"
+                      alt="Filip Bulc"
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                 </motion.div>
 
