@@ -13,6 +13,10 @@ lerna-debug.log*
 *.pid.lock
 tmp/
 temp/
+*.sync-conflict-*
+*.zip
+Thumbs.db
+Desktop.ini
 
 # Dependencies and build output
 node_modules

@@ -3,6 +3,7 @@ import { ArrowLeft, Star, TrendingUp, Palette, Settings, Ruler, Zap, ExternalLin
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline"
+import { ProjectLiveSiteLink } from "@/components/ui/project-live-site-link"
 import { Link } from "react-router-dom"
 import { useLanguage } from "@/contexts/language-context"
 
@@ -589,6 +590,12 @@ export function XmetPage() {
           <p className="text-xl md:text-2xl max-w-3xl mx-auto" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
             {translate({ ro: "Configurator modern pentru garduri și porți din aluminiu premium", en: "Modern configurator for premium aluminum fences and gates" })}
           </p>
+          <div className="mt-8">
+            <ProjectLiveSiteLink
+              url="https://garduri-xmet.ro"
+              buttonClassName="font-bold bg-[#FCD000] hover:bg-[#e6c200] text-black"
+            />
+          </div>
           <div className="flex flex-wrap justify-center gap-4 mt-6">
             <motion.span
               className="px-4 py-2 rounded-full text-sm font-medium"

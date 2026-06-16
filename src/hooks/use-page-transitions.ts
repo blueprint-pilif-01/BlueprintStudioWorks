@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
+const OUT_MS = 160 // how long we show the veil before navigating
+
 export function usePageTransitions() {
   const location = useLocation()
   const navigate = useNavigate()
@@ -8,9 +10,10 @@ export function usePageTransitions() {
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) return
+    // On touch devices we navigate instantly — perceived speed beats ceremony.
+    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches
+    if (prefersReduced || isTouch) return
 
-    // Creează overlay-ul dacă nu există
     let fx = document.querySelector('.page-xfade') as HTMLElement
     if (!fx) {
       fx = document.createElement('div')
@@ -19,23 +22,18 @@ export function usePageTransitions() {
       document.body.appendChild(fx)
     }
 
-    // ENTRANCE: după navigare, ascunde overlay-ul
+    // ENTRANCE: after navigation, fade the veil out
     if (isNavigating.current) {
       fx.classList.remove('hide')
-      // Forțăm un reflow pentru a asigura că tranziția pornește
       void fx.offsetHeight
       requestAnimationFrame(() => {
         fx.classList.add('hide')
         isNavigating.current = false
       })
     } else {
-      // Prima încărcare
       requestAnimationFrame(() => fx.classList.add('hide'))
     }
 
-    const DURATION = 600 // sync cu --xfade-dur (600ms)
-
-    // Helper: e link intern?
     const isInternal = (a: HTMLAnchorElement) => {
       try {
         const url = new URL(a.href)
@@ -48,27 +46,24 @@ export function usePageTransitions() {
       }
     }
 
-    // Rulează OUTRO și apoi navighează cu React Router
     const go = (href: string) => {
       if (isNavigating.current) return
       isNavigating.current = true
-      
-      fx.classList.remove('hide') // arată overlay-ul (fade-out pagina)
-      
+
+      fx.classList.remove('hide')
+
       setTimeout(() => {
         const url = new URL(href)
         navigate(url.pathname + url.search + url.hash)
-      }, DURATION - 100)
+      }, OUT_MS)
     }
 
-    // Interceptăm clickurile pe linkuri
     const handleClick = (e: Event) => {
       const a = (e.target as Element).closest('a[href]') as HTMLAnchorElement
       if (!a) return
-      // lasă Ctrl/Meta pentru "deschide în tab nou"
       if ((e as MouseEvent).metaKey || (e as MouseEvent).ctrlKey || (e as MouseEvent).shiftKey || (e as MouseEvent).altKey) return
       if (!isInternal(a)) return
-      
+
       e.preventDefault()
       e.stopPropagation()
       go(a.href)
@@ -81,13 +76,3 @@ export function usePageTransitions() {
     }
   }, [location, navigate])
 }
-
-
-
-
-
-
-
-
-
-

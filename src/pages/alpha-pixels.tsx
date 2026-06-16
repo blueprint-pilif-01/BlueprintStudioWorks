@@ -52,7 +52,7 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                       <div className="w-12 h-12 rounded-lg bg-[#18181b]" />
                       <div>
                         <p className="text-sm font-semibold text-[#18181b]">Gray-900</p>
-                        <p className="text-xs text-gray-600">#18181b — primary</p>
+                        <p className="text-xs text-gray-600">#18181b, primary</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -72,7 +72,7 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                   <ul className="text-sm text-gray-600 space-y-2">
                     <li>• Space Mono / JetBrains Mono (body)</li>
                     <li>• Roboto Flex (variable, hero)</li>
-                    <li>• VariableProximity — weight by cursor distance</li>
+                    <li>• VariableProximity, weight by cursor distance</li>
                   </ul>
                 </div>
               </div>
@@ -117,9 +117,9 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                 <div className="p-5 bg-[#18181b]/5 rounded-2xl border border-[#18181b]/20">
                   <h5 className="font-semibold text-[#18181b] mb-3">{translate({ ro: "Efecte Speciale", en: "Special Effects" })}</h5>
                   <ul className="text-sm text-gray-600 space-y-2">
-                    <li className="flex items-start gap-2"><span className="text-[#18181b]">•</span> PixelBlast — Three.js + Postprocessing pixel grid cu ripples, mouse/touch</li>
-                    <li className="flex items-start gap-2"><span className="text-[#18181b]">•</span> VariableProximity — Roboto Flex weight/optical size by cursor distance</li>
-                    <li className="flex items-start gap-2"><span className="text-[#18181b]">•</span> PageTransition — Layout-based route transitions</li>
+                    <li className="flex items-start gap-2"><span className="text-[#18181b]">•</span> PixelBlast, Three.js + Postprocessing pixel grid cu ripples, mouse/touch</li>
+                    <li className="flex items-start gap-2"><span className="text-[#18181b]">•</span> VariableProximity, Roboto Flex weight/optical size by cursor distance</li>
+                    <li className="flex items-start gap-2"><span className="text-[#18181b]">•</span> PageTransition, Layout-based route transitions</li>
                     <li className="flex items-start gap-2"><span className="text-[#18181b]">•</span> ScrollToTop / ScrollToTopButton</li>
                   </ul>
                 </div>
@@ -210,8 +210,8 @@ export function AlphaPixelsPage() {
           data={timelineData}
           title={translate({ ro: "Journey Alpha Pixels", en: "Alpha Pixels Journey" })}
           subtitle={translate({
-            ro: "De la concept la site media production — pixel grid interactiv și font variabil.",
-            en: "From concept to media production site — interactive pixel grid and variable font.",
+            ro: "De la concept la site media production, pixel grid interactiv și font variabil.",
+            en: "From concept to media production site, interactive pixel grid and variable font.",
           })}
         />
 

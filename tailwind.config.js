@@ -9,6 +9,7 @@ export default {
     extend: {
       colors: {
         primary: {
+          DEFAULT: '#00d0ff',
           50: '#f0f9ff',
           100: '#e0f2fe',
           200: '#bae6fd',
@@ -21,6 +22,7 @@ export default {
           900: '#0c4a6e',
         },
         secondary: {
+          DEFAULT: '#7a5cff',
           50: '#faf5ff',
           100: '#f3e8ff',
           200: '#e9d5ff',
@@ -33,6 +35,7 @@ export default {
           900: '#581c87',
         },
         accent: {
+          DEFAULT: '#ff7ad9',
           50: '#fdf2f8',
           100: '#fce7f3',
           200: '#fbcfe8',
@@ -47,7 +50,7 @@ export default {
         foreground: '#0f1730', // Original --fg
         muted: {
           DEFAULT: '#55607d', // Original --muted
-          foreground: '#6b7280',
+          foreground: '#4d5872',
         },
         background: '#f4f7fb', // Original --bg
         card: {

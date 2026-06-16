@@ -1,6 +1,6 @@
 const { getDatabase } = require('../config/database');
 const { logActivity } = require('../lib/activity');
-const { sendEmail } = require('../lib/email');
+const { sendEmailSafe } = require('../lib/email');
 const templates = require('../lib/email-templates');
 
 /**
@@ -88,7 +88,7 @@ exports.submitFeedback = async (req, res) => {
         subject: subject || null,
         messagePreview,
       });
-      await sendEmail(adminEmail, `New feedback` + (subject ? `: ${subject}` : ''), html);
+      await sendEmailSafe(adminEmail, `New feedback` + (subject ? `: ${subject}` : ''), html);
     }
 
     const fb = await db.prepare(`SELECT id, site_slug, subject, message, status, created_at FROM feedback WHERE client_id = $1 ORDER BY id DESC LIMIT 1`).get(req.clientId);

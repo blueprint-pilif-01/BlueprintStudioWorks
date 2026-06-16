@@ -87,7 +87,7 @@ export function AdminActivityPage() {
       label: "Client",
       render: (r: ActivityItem) => (
         <span className="text-xs text-gray-500 dark:text-gray-400">
-          {r.client_name || r.client_email || "—"}
+          {r.client_name || r.client_email || ", "}
         </span>
       ),
     },

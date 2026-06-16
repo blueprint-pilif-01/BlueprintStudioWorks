@@ -136,7 +136,7 @@ const values = [
     title: { ro: "Claritate & Simplitate", en: "Clarity & Simplicity" },
     description: {
       ro: "Cred că designul bun e invizibil. Fiecare element are un scop, nimic nu e acolo doar ca să arate bine.",
-      en: "Great design feels invisible. Every element has a purpose—nothing exists just to look pretty.",
+      en: "Good design stays out of the way. Every element has a job. Nothing is there just for show.",
     }
   },
   {
@@ -144,7 +144,7 @@ const values = [
     title: { ro: "Performanță", en: "Performance" },
     description: {
       ro: "Construiesc site-uri rapide care se încarcă instant. Optimizare, lazy loading, code splitting , totul pentru experiență fluidă.",
-      en: "I build lightning-fast websites. Optimization, lazy loading, code splitting—everything for a smooth experience.",
+      en: "I build fast sites. Lazy loading, code splitting, the usual performance work, so pages feel snappy.",
     }
   },
   {
@@ -160,7 +160,7 @@ const values = [
     title: { ro: "Colaborare", en: "Collaboration" },
     description: {
       ro: "Lucrez alături de clienți ca un partener, nu ca un contractor. Înțeleg viziunea ta și o transform în cod funcțional.",
-      en: "I work beside clients as a partner, not a vendor. I understand your vision and translate it into reliable code.",
+      en: "I work with you, not around you. I listen, then I build what we agreed on.",
     }
   }
 ] as const
@@ -192,8 +192,8 @@ export function AboutPage() {
             </h1>
             <p className="text-muted max-w-3xl mx-auto leading-relaxed" style={{ fontSize: "clamp(1rem, 3vw, 1.5rem)" }}>
               {translate({
-                ro: "Sunt Filip Bulc, web designer și developer specializat în site-uri premium cu React. Creez experiențe digitale care nu doar arată bine, ci și funcționează impecabil.",
-                en: "I'm Filip Bulc, a web designer and developer focused on premium React experiences. I design and build websites that look incredible and perform flawlessly.",
+                ro: "Sunt Filip Bulc. Fac site-uri și aplicații web cu React, de la landing page la platforme cu backend.",
+                en: "I'm Filip Bulc. I build websites and web apps with React, from simple landing pages to full platforms.",
               })}
             </p>
           </motion.div>
@@ -232,34 +232,22 @@ export function AboutPage() {
                     {translate({ ro: "Salut, sunt Filip Bulc 👋", en: "Hi, I'm Filip Bulc 👋" })}
                   </h2>
                   <p className="text-lg text-muted leading-relaxed mb-4">
-                    {translate({ ro: "Sunt fondatorul ", en: "I'm the founder of " })}
-                    <span className="font-semibold text-foreground">Blueprint Studio Works</span>
                     {translate({
-                      ro: ", un studio dedicat creării de site-uri și aplicații web care combină designul elegant cu tehnologia modernă.",
-                      en: ", a studio dedicated to building websites and web apps that blend elegant design with modern technology.",
+                      ro: "Sunt fondatorul Blueprint Studio Works. Lucrez direct cu clienții, fără agenție și fără complicații inutile.",
+                      en: "I founded Blueprint Studio Works. I work directly with clients, no agency layer and no unnecessary process.",
                     })}
                   </p>
                   <p className="text-lg text-muted leading-relaxed mb-4">
-                    {translate({ ro: "Cu o pasiune pentru ", en: "With a passion for " })}
-                    <span className="font-semibold text-foreground">UX/UI design</span>
-                    {translate({ ro: " și ", en: " and " })}
-                    <span className="font-semibold text-foreground">
-                      {translate({ ro: "dezvoltare web", en: "web development" })}
-                    </span>
                     {translate({
-                      ro: ", ajut afacerile să își construiască prezența digitală prin site-uri care nu doar arată bine, ci și performează exceptional.",
-                      en: ", I help businesses build a digital presence through websites that both look stunning and perform exceptionally.",
+                      ro: "Folosesc React, TypeScript și Tailwind. Îmi place designul curat și site-urile care se încarcă repede.",
+                      en: "I use React, TypeScript and Tailwind. I like clean design and sites that load fast.",
                     })}
                   </p>
                   <p className="text-lg text-muted leading-relaxed mb-6">
                     {translate({
-                      ro: "De la freelanceri la companii, am livrat proiecte care pun accent pe ",
-                      en: "From freelancers to companies, I've delivered projects focused on ",
+                      ro: "Am făcut proiecte pentru freelanceri, firme mici și proiecte mai complexe. Mă interesează claritatea, viteza și ca vizitatorul să înțeleagă rapid ce oferi.",
+                      en: "I've built for freelancers, small businesses and larger projects. I care about clarity, speed and helping visitors understand what you do.",
                     })}
-                    <span className="font-semibold text-foreground">
-                      {translate({ ro: "performanță, claritate și experiența utilizatorului", en: "performance, clarity, and user experience" })}
-                    </span>
-                    .
                   </p>
 
                   {/* Contact Info */}

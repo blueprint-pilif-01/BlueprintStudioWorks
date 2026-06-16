@@ -21,8 +21,8 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                 <h4 className="text-2xl font-bold text-[#0A4046] mb-4">Termotal TM</h4>
                 <p className="text-gray-600 mb-6">
                   {translate({
-                    ro: "Site corporate pentru companie română de construcții industriale — instalații, întreținere, lucrări metalice. Single-page cu Hero, Proiecte, Despre, Servicii, Contact + pagini țară pentru 14 țări cu hartă interactivă.",
-                    en: "Corporate site for Romanian industrial construction company — installation, maintenance, metalwork. Single-page with Hero, Projects, About, Services, Contact + country pages for 14 countries with interactive map.",
+                    ro: "Site corporate pentru companie română de construcții industriale, instalații, întreținere, lucrări metalice. Single-page cu Hero, Proiecte, Despre, Servicii, Contact + pagini țară pentru 14 țări cu hartă interactivă.",
+                    en: "Corporate site for Romanian industrial construction company, installation, maintenance, metalwork. Single-page with Hero, Projects, About, Services, Contact + country pages for 14 countries with interactive map.",
                   })}
                 </p>
                 <div className="grid grid-cols-2 gap-4 mb-6">
@@ -55,14 +55,14 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                       <div className="w-12 h-12 rounded-lg" style={{ background: TEAL }} />
                       <div>
                         <p className="text-sm font-semibold text-[#0A4046]">Teal</p>
-                        <p className="text-xs text-gray-600">#0A4046 — primary</p>
+                        <p className="text-xs text-gray-600">#0A4046, primary</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-lg" style={{ background: ORANGE }} />
                       <div>
                         <p className="text-sm font-semibold text-[#0A4046]">Orange</p>
-                        <p className="text-xs text-gray-600">#f97316 — accent</p>
+                        <p className="text-xs text-gray-600">#f97316, accent</p>
                       </div>
                     </div>
                   </div>
@@ -92,8 +92,8 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                 <h4 className="text-2xl font-bold text-[#0A4046] mb-4">{translate({ ro: "Rute", en: "Routes" })}</h4>
                 <p className="text-gray-600 mb-6">
                   {translate({
-                    ro: "/ — single-page (Hero, Projects, About, Services, Contact). /country/:country — 14 pagini țară cu hartă interactivă și galerie proiecte.",
-                    en: "/ — single-page (Hero, Projects, About, Services, Contact). /country/:country — 14 country pages with interactive map and project gallery.",
+                    ro: "/, single-page (Hero, Projects, About, Services, Contact). /country/:country, 14 pagini țară cu hartă interactivă și galerie proiecte.",
+                    en: "/, single-page (Hero, Projects, About, Services, Contact). /country/:country, 14 country pages with interactive map and project gallery.",
                   })}
                 </p>
                 <div className="grid grid-cols-2 gap-3">
@@ -117,7 +117,7 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                 <div className="p-5 bg-[#0A4046]/10 rounded-2xl border border-[#0A4046]/20">
                   <h5 className="font-semibold text-[#0A4046] mb-3">{translate({ ro: "Features", en: "Features" })}</h5>
                   <ul className="text-sm text-gray-600 space-y-2">
-                    <li className="flex items-start gap-2"><span className="text-[#0A4046]">•</span> Hartă mondială interactivă — click pe țări</li>
+                    <li className="flex items-start gap-2"><span className="text-[#0A4046]">•</span> Hartă mondială interactivă, click pe țări</li>
                     <li className="flex items-start gap-2"><span className="text-[#0A4046]">•</span> Stats: 14 țări, 500+ proiecte, 10+ ani</li>
                     <li className="flex items-start gap-2"><span className="text-[#0A4046]">•</span> Mobile dropdown pentru selecție țară</li>
                     <li className="flex items-start gap-2"><span className="text-[#0A4046]">•</span> Date centralizate: iso, coordonate, steaguri</li>
@@ -144,8 +144,8 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                 </div>
                 <p className="text-sm text-gray-600 leading-relaxed">
                   {translate({
-                    ro: "Site corporate pentru Termotal TM — instalații, întreținere, lucrări metalice. Single-page + 14 pagini țară cu hartă interactivă și galerie proiecte.",
-                    en: "Corporate site for Termotal TM — installation, maintenance, metalwork. Single-page + 14 country pages with interactive map and project gallery.",
+                    ro: "Site corporate pentru Termotal TM, instalații, întreținere, lucrări metalice. Single-page + 14 pagini țară cu hartă interactivă și galerie proiecte.",
+                    en: "Corporate site for Termotal TM, installation, maintenance, metalwork. Single-page + 14 country pages with interactive map and project gallery.",
                   })}
                 </p>
               </div>
@@ -213,8 +213,8 @@ export function TermotalPage() {
           data={timelineData}
           title={translate({ ro: "Journey Termotal TM", en: "Termotal TM Journey" })}
           subtitle={translate({
-            ro: "De la concept la site corporate — hartă interactivă, 14 țări.",
-            en: "From concept to corporate site — interactive map, 14 countries.",
+            ro: "De la concept la site corporate, hartă interactivă, 14 țări.",
+            en: "From concept to corporate site, interactive map, 14 countries.",
           })}
         />
 

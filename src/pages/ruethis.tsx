@@ -3,6 +3,7 @@ import { ArrowLeft, Star, Palette, Briefcase, Eye, Sparkles, ExternalLink } from
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline"
+import { ProjectLiveSiteLink } from "@/components/ui/project-live-site-link"
 import { Link } from "react-router-dom"
 import { Localized } from "@/components/localized"
 
@@ -234,7 +235,7 @@ const timelineData: TimelineEntry[] = [
                   <h4 className="text-2xl font-bold mb-4" style={{ color: '#FF6F00' }}>Homepage</h4>
                   <p className="mb-6" style={{ color: 'rgba(255, 255, 255, 0.8)', lineHeight: '1.6' }}>
                     The homepage communicates value immediately: "Premium Logo Designer | Memorable Visual Identity".
-                    Every section guides visitors from inspiration to action—from the curated logo gallery
+                    Every section guides visitors from inspiration to action, from the curated logo gallery
                     to transparent, easy-to-understand service packages.
                   </p>
                   <div className="space-y-3">
@@ -511,7 +512,7 @@ const timelineData: TimelineEntry[] = [
                 <div>
                   <h4 className="text-2xl font-bold mb-4" style={{ color: '#FF6F00' }}>Service Packages</h4>
                   <p className="mb-6" style={{ color: 'rgba(255, 255, 255, 0.8)', lineHeight: '1.6' }}>
-                    Three transparent packages for different needs—from a focused logo to a complete identity.
+                    Three transparent packages for different needs, from a focused logo to a complete identity.
                     Clear pricing and unlimited revisions for total peace of mind.
                   </p>
                   <div className="space-y-3">
@@ -780,7 +781,7 @@ const timelineData: TimelineEntry[] = [
                       Schedule & Availability
                     </h5>
                     <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
-                      Monday–Friday 09:00-18:00. Replies within 24h. Every new project starts with a free 30-minute call.
+                      Monday-Friday 09:00-18:00. Replies within 24h. Every new project starts with a free 30-minute call.
                     </p>
                   </div>
                   <div className="p-5 rounded-2xl border" style={{ background: 'rgba(255, 111, 0, 0.1)', borderColor: 'rgba(255, 111, 0, 0.3)' }}>
@@ -903,7 +904,7 @@ const timelineData: TimelineEntry[] = [
                 <h5 className="text-lg font-semibold mb-4" style={{ color: '#FF6F00' }}>Project Impact</h5>
                 <p className="mb-6" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
                   We poured a lot of heart into this build. The bold orange-on-black combo is a statement.
-                  Every animation is tuned to leave a memory—subtle glassmorphism, precise hovers,
+                  Every animation is tuned to leave a memory, subtle glassmorphism, precise hovers,
                   and a confident aesthetic that screams creativity.
                 </p>
                 
@@ -997,9 +998,15 @@ export function RuethisPage() {
           <p className="text-xl md:text-2xl max-w-3xl mx-auto" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
             <Localized
               ro="Designer Logo Premium - Identitate vizuală memorabilă pentru branduri de succes"
-              en="Premium Logo Designer — Memorable visual identities for ambitious brands"
+              en="Premium Logo Designer, Memorable visual identities for ambitious brands"
             />
           </p>
+          <div className="mt-8">
+            <ProjectLiveSiteLink
+              url="https://ruethisdesign.ro"
+              buttonClassName="font-bold bg-[#FF6F00] hover:bg-[#e86400] text-black"
+            />
+          </div>
           <div className="flex flex-wrap justify-center gap-4 mt-6">
             <span className="px-4 py-2 rounded-full text-sm font-medium" style={{ backgroundColor: 'rgba(255, 111, 0, 0.2)', color: '#FF6F00' }}>
               React + TypeScript
@@ -1023,7 +1030,7 @@ export function RuethisPage() {
           subtitle={
             <Localized
               ro="De la concept la brand puternic - servicii premium de identitate vizuală"
-              en="From concept to a bold brand — premium visual identity services"
+              en="From concept to a bold brand, premium visual identity services"
             />
           }
         />

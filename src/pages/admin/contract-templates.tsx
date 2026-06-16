@@ -39,7 +39,7 @@ export function AdminContractTemplatesPage() {
 
   const columns = [
     { key: "title", label: "Title", render: (r: Template) => <span className="font-medium text-gray-900 dark:text-gray-100">{r.title}</span> },
-    { key: "nickname", label: "Nickname", render: (r: Template) => <span className="text-gray-500 dark:text-gray-400">{r.nickname || "—"}</span> },
+    { key: "nickname", label: "Nickname", render: (r: Template) => <span className="text-gray-500 dark:text-gray-400">{r.nickname || ", "}</span> },
     { key: "updated_at", label: "Updated", render: (r: Template) => <span className="text-xs text-gray-400 dark:text-gray-500">{new Date(r.updated_at).toLocaleDateString()}</span> },
   ];
 
@@ -61,7 +61,7 @@ export function AdminContractTemplatesPage() {
             </div>
             <div>
               <label className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">
-                Contract text <span className="normal-case text-gray-400 dark:text-gray-500 font-normal">— use {"{{client_name}}"} for placeholders</span>
+                Contract text <span className="normal-case text-gray-400 dark:text-gray-500 font-normal">,  use {"{{client_name}}"} for placeholders</span>
               </label>
               <Textarea value={newRawText} onChange={(e) => setNewRawText(e.target.value)} placeholder="Full contract content..." rows={8} className="mt-1 !bg-gray-50 dark:!bg-gray-700 !border-gray-200 dark:!border-gray-600" />
             </div>

@@ -88,7 +88,7 @@ export function AdminOverviewPage() {
                 <li key={a.id} className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2 flex-wrap">
                   <Activity className="h-3.5 w-3.5 text-primary-500 dark:text-primary-400 flex-shrink-0" />
                   <span>{actionLabels[a.action] || a.action}: {a.description}</span>
-                  <span className="text-xs text-gray-500 dark:text-gray-500">({a.client_name || a.client_email || "—"})</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-500">({a.client_name || a.client_email || ", "})</span>
                   <span className="text-[10px] text-gray-400 dark:text-gray-500 flex-shrink-0">{new Date(a.created_at).toLocaleDateString()}</span>
                 </li>
               ))}

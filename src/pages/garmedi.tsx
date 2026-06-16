@@ -3,6 +3,7 @@ import { ArrowLeft, Star, Download, ShoppingCart, ExternalLink } from "lucide-re
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline"
+import { ProjectLiveSiteLink } from "@/components/ui/project-live-site-link"
 import { Link } from "react-router-dom"
 import { useLanguage } from "@/contexts/language-context"
 
@@ -55,14 +56,14 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                       <div className="w-12 h-12 rounded-lg" style={{ background: ORANGE }} />
                       <div>
                         <p className="text-sm font-semibold text-[#1a1a2e]">Orange</p>
-                        <p className="text-xs text-[#6b7280]">#fa7c1f — accent</p>
+                        <p className="text-xs text-[#6b7280]">#fa7c1f, accent</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-lg" style={{ background: NAVY }} />
                       <div>
                         <p className="text-sm font-semibold text-[#1a1a2e]">Navy</p>
-                        <p className="text-xs text-[#6b7280]">#1a1a2e — text</p>
+                        <p className="text-xs text-[#6b7280]">#1a1a2e, text</p>
                       </div>
                     </div>
                   </div>
@@ -211,6 +212,12 @@ export function GarmediPage() {
               en: "Medical clothing e-commerce • React 19 + Three.js • Shop + complete Admin",
             })}
           </p>
+          <div className="mt-8">
+            <ProjectLiveSiteLink
+              url="https://garmedi.ro"
+              buttonClassName="bg-[#fa7c1f] hover:bg-[#e86b10] text-white"
+            />
+          </div>
           <div className="flex flex-wrap justify-center gap-4 mt-6">
             <span className="px-4 py-2 bg-[#fa7c1f]/20 text-[#fa7c1f] rounded-full text-sm font-medium">React 19</span>
             <span className="px-4 py-2 bg-[#fa7c1f]/20 text-[#fa7c1f] rounded-full text-sm font-medium">E-commerce</span>
@@ -222,8 +229,8 @@ export function GarmediPage() {
           data={timelineData}
           title={translate({ ro: "Journey Garmedi", en: "Garmedi Journey" })}
           subtitle={translate({
-            ro: "E-commerce medical complet — magazin, coș, admin, BaseLinker.",
-            en: "Complete medical e-commerce — shop, cart, admin, BaseLinker.",
+            ro: "E-commerce medical complet, magazin, coș, admin, BaseLinker.",
+            en: "Complete medical e-commerce, shop, cart, admin, BaseLinker.",
           })}
         />
 

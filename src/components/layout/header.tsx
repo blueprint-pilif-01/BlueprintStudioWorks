@@ -43,28 +43,19 @@ export function Header() {
   }, [])
 
   const headerUi = (
-    <div 
+    <div
       className="fixed left-0 right-0 z-[2147483647] w-full pointer-events-auto"
-      style={{ 
+      style={{
         top: 'max(0.75rem, env(safe-area-inset-top, 0px))',
-        willChange: 'transform',
-        transform: 'translateZ(0)',
-        backfaceVisibility: 'hidden'
       }}
     >
       <div className="w-full flex justify-center px-4 sm:px-6">
         <div
           className={cn(
-            "liquid-glass-navbar w-full max-w-7xl overflow-hidden transition-all duration-300 ease-in-out",
-            isScrolled ? "rounded-3xl" : "rounded-3xl"
+            "liquid-glass-navbar w-full max-w-7xl overflow-hidden rounded-3xl transition-[padding] duration-300 ease-in-out",
+            isScrolled && "scrolled"
           )}
           style={{
-            background: isScrolled ? 'rgba(255, 255, 255, 0.7)' : 'rgba(255, 255, 255, 0.6)',
-            backdropFilter: isScrolled ? 'blur(24px)' : 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.5)',
-            boxShadow: isScrolled 
-              ? '0 8px 32px -12px rgba(30, 41, 59, 0.35)' 
-              : '0 18px 40px -20px rgba(30, 41, 59, 0.45)',
             paddingLeft: isScrolled ? "1.25rem" : "1.75rem",
             paddingRight: isScrolled ? "1.25rem" : "1.75rem",
             paddingTop: isScrolled ? "0.75rem" : "1rem",

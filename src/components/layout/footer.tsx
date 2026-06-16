@@ -26,7 +26,7 @@ export function Footer() {
 
   return (
     <footer className="mt-auto px-6 sm:px-8 lg:px-10 pb-10">
-      <div className="container-custom flex flex-col gap-10 rounded-[32px] border border-white/40 bg-white/60 backdrop-blur-2xl px-8 py-12 shadow-[0_18px_40px_-22px_rgba(30,41,59,0.45)]">
+      <div className="container-custom glass flex flex-col gap-10 rounded-[32px] px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">

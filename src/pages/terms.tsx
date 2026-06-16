@@ -32,7 +32,7 @@ const termsContent = {
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-6">3.1 Site Simplu (400 EUR)</h3>
         <p className="text-muted leading-relaxed mb-2">Include:</p>
         <ul className="list-disc list-inside space-y-1 text-muted leading-relaxed ml-4">
-          <li>1–5 pagini (Home, About, Contact, Services)</li>
+          <li>1-5 pagini (Home, About, Contact, Services)</li>
           <li>Design modern și responsive (desktop + mobil)</li>
           <li>Formular de contact funcțional</li>
           <li>Optimizare SEO de bază</li>
@@ -42,7 +42,7 @@ const termsContent = {
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-6">3.2 Site Complex (750 EUR)</h3>
         <p className="text-muted leading-relaxed mb-2">Include tot din Site Simplu, plus:</p>
         <ul className="list-disc list-inside space-y-1 text-muted leading-relaxed ml-4">
-          <li>5–15 pagini dinamice</li>
+          <li>5-15 pagini dinamice</li>
           <li>Blog/Noutăți cu panou de administrare</li>
           <li>Galerii foto/video animate</li>
           <li>Formulare avansate</li>
@@ -74,10 +74,10 @@ const termsContent = {
 
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-6">3.5 Servicii Suplimentare</h3>
         <ul className="list-disc list-inside space-y-2 text-muted leading-relaxed ml-4">
-          <li><strong>Hosting:</strong> 30 EUR/lună – hosting profesional.</li>
-          <li><strong>Suport Premium:</strong> 100 EUR/lună – modificări nelimitate și asistență prioritară (prima lună gratuită, minim 3 luni).</li>
-          <li><strong>Hosting + Suport Premium:</strong> 120 EUR/lună – pachet complet.</li>
-          <li><strong>O zi de modificări:</strong> 40 EUR – zi prestabilită pentru actualizări majore.</li>
+          <li><strong>Hosting:</strong> 30 EUR/lună, hosting profesional.</li>
+          <li><strong>Suport Premium:</strong> 100 EUR/lună, modificări nelimitate și asistență prioritară (prima lună gratuită, minim 3 luni).</li>
+          <li><strong>Hosting + Suport Premium:</strong> 120 EUR/lună, pachet complet.</li>
+          <li><strong>O zi de modificări:</strong> 40 EUR, zi prestabilită pentru actualizări majore.</li>
         </ul>
       </section>
 
@@ -119,7 +119,7 @@ const termsContent = {
         <p className="text-muted leading-relaxed mt-2">Extra reviziile costă 40 EUR/zi sau sunt incluse în abonamentul de Suport Premium.</p>
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-4">5.3 Modificări majore</h3>
         <p className="text-muted leading-relaxed mb-4">
-          Modificările în afara scopului inițial sunt estimate separat. O „zi de modificări” acoperă aproximativ 6–8 ore de lucru. Modificările foarte complexe pot necesita costuri suplimentare, comunicate din timp.
+          Modificările în afara scopului inițial sunt estimate separat. O „zi de modificări” acoperă aproximativ 6-8 ore de lucru. Modificările foarte complexe pot necesita costuri suplimentare, comunicate din timp.
         </p>
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-4">5.4 Conținut</h3>
         <p className="text-muted leading-relaxed">
@@ -165,11 +165,11 @@ const termsContent = {
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4">8. Hosting și Domeniu</h2>
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-4">8.1 Hosting</h3>
-        <p className="text-muted leading-relaxed mb-4">30 EUR/lună – include spațiu, SSL, backup-uri săptămânale, monitorizare și suport tehnic de bază.</p>
+        <p className="text-muted leading-relaxed mb-4">30 EUR/lună, include spațiu, SSL, backup-uri săptămânale, monitorizare și suport tehnic de bază.</p>
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-4">8.2 Domeniu</h3>
         <p className="text-muted leading-relaxed mb-4">Costul domeniului nu este inclus. Clientul îl poate achiziționa direct sau ne poate împuternici să-l cumpărăm (cost + 10 EUR taxă administrativă).</p>
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-4">8.3 Migrare</h3>
-        <p className="text-muted leading-relaxed">Oferim migrare la alt furnizor (inclus în Suport Premium sau 50–150 EUR, în funcție de complexitate).</p>
+        <p className="text-muted leading-relaxed">Oferim migrare la alt furnizor (inclus în Suport Premium sau 50-150 EUR, în funcție de complexitate).</p>
       </section>
 
       <section>
@@ -259,7 +259,7 @@ const termsContent = {
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-6">3.1 Simple Site (400 EUR)</h3>
         <p className="text-muted leading-relaxed mb-2">Includes:</p>
         <ul className="list-disc list-inside space-y-1 text-muted leading-relaxed ml-4">
-          <li>1–5 pages (Home, About, Contact, Services)</li>
+          <li>1-5 pages (Home, About, Contact, Services)</li>
           <li>Modern, responsive design (desktop + mobile)</li>
           <li>Functional contact form</li>
           <li>Basic SEO optimization</li>
@@ -269,7 +269,7 @@ const termsContent = {
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-6">3.2 Complex Site (750 EUR)</h3>
         <p className="text-muted leading-relaxed mb-2">Includes all features from the Simple Site, plus:</p>
         <ul className="list-disc list-inside space-y-1 text-muted leading-relaxed ml-4">
-          <li>5–15 dynamic pages</li>
+          <li>5-15 dynamic pages</li>
           <li>Blog/News section with admin panel</li>
           <li>Animated photo/video galleries</li>
           <li>Advanced forms</li>
@@ -301,10 +301,10 @@ const termsContent = {
 
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-6">3.5 Additional Services</h3>
         <ul className="list-disc list-inside space-y-2 text-muted leading-relaxed ml-4">
-          <li><strong>Hosting:</strong> 30 EUR/month – Professional hosting for your website</li>
-          <li><strong>Premium Support:</strong> 100 EUR/month – Unlimited edits and priority assistance (first month free, minimum 3-month commitment)</li>
-          <li><strong>Hosting + Premium Support:</strong> 120 EUR/month – Complete package</li>
-          <li><strong>One day of changes:</strong> 40 EUR – Pre-scheduled day for major updates</li>
+          <li><strong>Hosting:</strong> 30 EUR/month, Professional hosting for your website</li>
+          <li><strong>Premium Support:</strong> 100 EUR/month, Unlimited edits and priority assistance (first month free, minimum 3-month commitment)</li>
+          <li><strong>Hosting + Premium Support:</strong> 120 EUR/month, Complete package</li>
+          <li><strong>One day of changes:</strong> 40 EUR, Pre-scheduled day for major updates</li>
         </ul>
       </section>
 
@@ -346,7 +346,7 @@ const termsContent = {
         <p className="text-muted leading-relaxed mt-2">Additional revisions cost 40 EUR/day or are included in the Premium Support plan.</p>
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-4">5.3 Major Changes</h3>
         <p className="text-muted leading-relaxed mb-4">
-          Major changes outside the initial scope are estimated separately. A “day of changes” covers about 6–8 hours of work. Extremely complex requests may incur extra fees, communicated beforehand.
+          Major changes outside the initial scope are estimated separately. A “day of changes” covers about 6-8 hours of work. Extremely complex requests may incur extra fees, communicated beforehand.
         </p>
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-4">5.4 Content</h3>
         <p className="text-muted leading-relaxed">
@@ -392,11 +392,11 @@ const termsContent = {
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4">8. Hosting and Domain</h2>
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-4">8.1 Hosting Services</h3>
-        <p className="text-muted leading-relaxed mb-4">30 EUR/month – includes storage, SSL, weekly backups, uptime monitoring, and basic technical support.</p>
+        <p className="text-muted leading-relaxed mb-4">30 EUR/month, includes storage, SSL, weekly backups, uptime monitoring, and basic technical support.</p>
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-4">8.2 Domain</h3>
         <p className="text-muted leading-relaxed mb-4">Domain costs are not included. Clients may purchase the domain themselves or request that we handle it (cost + 10 EUR administrative fee).</p>
         <h3 className="text-xl font-semibold text-foreground mb-3 mt-4">8.3 Migration</h3>
-        <p className="text-muted leading-relaxed">We can help migrate the website to another provider. This is included in Premium Support or billed separately (50–150 EUR depending on complexity).
+        <p className="text-muted leading-relaxed">We can help migrate the website to another provider. This is included in Premium Support or billed separately (50-150 EUR depending on complexity).
         </p>
       </section>
 

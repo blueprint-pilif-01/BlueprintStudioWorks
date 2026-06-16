@@ -21,8 +21,8 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                 <h4 className="text-2xl font-bold text-[#4A4A4A] mb-4">Lucas & Amélie</h4>
                 <p className="text-[#8B7E7E] mb-6">
                   {translate({
-                    ro: "Site de nuntă pentru Lucas & Amélie — 09.05.2026, Timișoara. Layout horizontal cu 7 secțiuni: Home, Schedule, Venue, Gallery, Timișoara info, Tips, RSVP. Intro animation, formular RSVP multi-step (Google Apps Script).",
-                    en: "Wedding website for Lucas & Amélie — 09.05.2026, Timișoara. Horizontal layout with 7 sections: Home, Schedule, Venue, Gallery, Timișoara info, Tips, RSVP. Intro animation, multi-step RSVP form (Google Apps Script).",
+                    ro: "Site de nuntă pentru Lucas & Amélie, 09.05.2026, Timișoara. Layout horizontal cu 7 secțiuni: Home, Schedule, Venue, Gallery, Timișoara info, Tips, RSVP. Intro animation, formular RSVP multi-step (Google Apps Script).",
+                    en: "Wedding website for Lucas & Amélie, 09.05.2026, Timișoara. Horizontal layout with 7 sections: Home, Schedule, Venue, Gallery, Timișoara info, Tips, RSVP. Intro animation, multi-step RSVP form (Google Apps Script).",
                   })}
                 </p>
                 <div className="grid grid-cols-2 gap-4 mb-6">
@@ -94,8 +94,8 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                 <h4 className="text-2xl font-bold text-[#4A4A4A] mb-4">7 Secțiuni Orizontale</h4>
                 <p className="text-[#8B7E7E] mb-6">
                   {translate({
-                    ro: "Layout horizontal full-viewport cu translateX navigation. Fără React Router — custom event navigateToSection. Snap sections, swipe pe mobile. Glass navbar fix în partea de jos.",
-                    en: "Horizontal full-viewport layout with translateX navigation. No React Router — custom navigateToSection event. Snap sections, swipe on mobile. Fixed glass navbar at bottom.",
+                    ro: "Layout horizontal full-viewport cu translateX navigation. Fără React Router, custom event navigateToSection. Snap sections, swipe pe mobile. Glass navbar fix în partea de jos.",
+                    en: "Horizontal full-viewport layout with translateX navigation. No React Router, custom navigateToSection event. Snap sections, swipe on mobile. Fixed glass navbar at bottom.",
                   })}
                 </p>
                 <div className="grid grid-cols-2 gap-3">
@@ -165,8 +165,8 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                 </div>
                 <p className="text-sm text-[#8B7E7E] leading-relaxed">
                   {translate({
-                    ro: "Paletă pastel pink & purple, glass navbar scroll-aware, section backgrounds per secțiune, serif typography elegantă. Fără link public — proiect privat.",
-                    en: "Pastel pink & purple palette, scroll-aware glass navbar, per-section backgrounds, elegant serif typography. No public link — private project.",
+                    ro: "Paletă pastel pink & purple, glass navbar scroll-aware, section backgrounds per secțiune, serif typography elegantă. Fără link public, proiect privat.",
+                    en: "Pastel pink & purple palette, scroll-aware glass navbar, per-section backgrounds, elegant serif typography. No public link, private project.",
                   })}
                 </p>
               </div>
@@ -216,8 +216,8 @@ export function LucasAmeliePage() {
           data={timelineData}
           title={translate({ ro: "Journey Lucas & Amélie", en: "Lucas & Amélie Journey" })}
           subtitle={translate({
-            ro: "De la concept la site nuntă — layout horizontal, RSVP, floral decorations.",
-            en: "From concept to wedding site — horizontal layout, RSVP, floral decorations.",
+            ro: "De la concept la site nuntă, layout horizontal, RSVP, floral decorations.",
+            en: "From concept to wedding site, horizontal layout, RSVP, floral decorations.",
           })}
         />
 

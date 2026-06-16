@@ -8,20 +8,20 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 
-          "bg-white/16 backdrop-blur-md border border-white/55 text-foreground hover:bg-white/24 hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl",
-        primary: 
-          "bg-primary-500 text-white hover:bg-primary-600 hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl",
-        secondary: 
-          "bg-secondary-500 text-white hover:bg-secondary-600 hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl",
-        outline: 
-          "border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white hover:scale-105 hover:-translate-y-1",
-        ghost: 
+        default:
+          "bg-white/40 border border-white/60 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_4px_14px_-4px_rgba(15,23,48,0.18)] hover:bg-white/60 md:hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,1),0_8px_22px_-6px_rgba(15,23,48,0.24)]",
+        primary:
+          "bg-primary-500 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_6px_18px_-6px_rgba(0,160,210,0.6)] hover:bg-primary-600 md:hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_10px_26px_-8px_rgba(0,160,210,0.7)]",
+        secondary:
+          "bg-secondary-500 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_6px_18px_-6px_rgba(100,70,230,0.6)] hover:bg-secondary-600 md:hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_10px_26px_-8px_rgba(100,70,230,0.7)]",
+        outline:
+          "border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white md:hover:-translate-y-0.5",
+        ghost:
           "text-foreground hover:bg-white/10 hover:text-foreground",
-        link: 
+        link:
           "text-primary-500 underline-offset-4 hover:underline",
         glass:
-          "bg-white/70 backdrop-blur-xl border border-white/55 text-foreground hover:bg-white/80 hover:scale-105 hover:-translate-y-1 shadow-2xl hover:shadow-3xl",
+          "bg-gradient-to-b from-white/80 to-white/55 border border-white/70 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.95),inset_0_-1px_0_rgba(15,23,48,0.05),0_6px_18px_-6px_rgba(15,23,48,0.22)] hover:from-white/90 hover:to-white/70 md:hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,1),inset_0_-1px_0_rgba(15,23,48,0.05),0_12px_28px_-8px_rgba(15,23,48,0.28)]",
       },
       size: {
         default: "h-12 px-6 py-3",

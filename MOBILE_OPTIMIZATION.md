@@ -91,9 +91,9 @@
 - Security headers complete
 - Custom error pages
 
-### 📝 FormSubmit Integration
+### 📝 Backend Nodemailer Integration
 
-**Endpoint:** `https://formsubmit.co/ajax/blueprintstudioworks@gmail.com`
+**Endpoint:** `https://api.blueprint-studio-works.ro/api/public/contact`
 
 **Features:**
 - Validare completă în timp real
@@ -101,7 +101,7 @@
 - Multiple servicii selectabile
 - Format tabel pentru email
 - Subject personalizat cu numele clientului
-- Captcha disabled pentru UX mai bun
+- Trimitere prin backend Express + Nodemailer
 - Error handling cu mesaje clare
 
 **Fields trimise:**
@@ -179,4 +179,3 @@
 ---
 
 **Toate optimizările sunt LIVE și FUNCȚIONALE!** 🚀
-

@@ -179,7 +179,7 @@ const privacyContent = {
 
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4">15. Plângeri către autoritate</h2>
-        <p className="text-muted leading-relaxed">Aveți dreptul să vă adresați Autorității Naționale de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP) – www.dataprotection.ro.</p>
+        <p className="text-muted leading-relaxed">Aveți dreptul să vă adresați Autorității Naționale de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), www.dataprotection.ro.</p>
       </section>
 
       <section>
@@ -190,7 +190,7 @@ const privacyContent = {
           <li><strong>Telefon:</strong> +40 749 084 150</li>
           <li><strong>Locație:</strong> Timișoara, România</li>
         </ul>
-        <p className="text-muted leading-relaxed mt-2">Răspundem, de regulă, în 2–3 zile lucrătoare.</p>
+        <p className="text-muted leading-relaxed mt-2">Răspundem, de regulă, în 2-3 zile lucrătoare.</p>
       </section>
     </>
   ),
@@ -362,7 +362,7 @@ const privacyContent = {
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4">15. Complaints</h2>
         <p className="text-muted leading-relaxed">
-          You may lodge a complaint with the Romanian National Supervisory Authority for Personal Data Processing (ANSPDCP) – www.dataprotection.ro.
+          You may lodge a complaint with the Romanian National Supervisory Authority for Personal Data Processing (ANSPDCP), www.dataprotection.ro.
         </p>
       </section>
 
@@ -374,7 +374,7 @@ const privacyContent = {
           <li><strong>Phone:</strong> +40 749 084 150</li>
           <li><strong>Location:</strong> Timișoara, Romania</li>
         </ul>
-        <p className="text-muted leading-relaxed mt-2">We typically respond within 2–3 business days.</p>
+        <p className="text-muted leading-relaxed mt-2">We typically respond within 2-3 business days.</p>
       </section>
     </>
   ),

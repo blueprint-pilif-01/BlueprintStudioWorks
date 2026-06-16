@@ -12,34 +12,34 @@ const highlightContent = {
     {
       icon: Sparkles,
       title: "Site de prezentare",
-      description: "Creez landing pages și pagini de brand care comunică clar mesajul tău. Design modern, animații fluide, optimizat pentru conversie. În 1-2 săptămâni, brandul tău prinde viață online.",
+      description: "Landing page-uri și site-uri de prezentare. Mesaj clar, design curat, livrare în 1-2 săptămâni.",
     },
     {
       icon: Clock,
       title: "Magazin online",
-      description: "Construiesc magazine online complete: coș, plăți, facturare automată, filtrare avansată. Totul gata de creștere din prima zi. React + TypeScript pentru performanță maximă.",
+      description: "Magazine online cu coș, plăți și tot ce trebuie ca să vinzi. Construit pe React, gata de scalat.",
     },
     {
       icon: Zap,
-      title: "Aplicații Web",
-      description: "Dezvolt aplicații web custom: dashboard-uri administrative, configuratoare interactive, platforme full-stack. Rezolv provocări tehnice cu soluții elegante și scalabile.",
+      title: "Aplicații web",
+      description: "Dashboard-uri, formulare complexe, platforme cu backend. Fac ce ai nevoie, nu template-uri.",
     },
   ],
   en: [
     {
       icon: Sparkles,
-      title: "Presentation Website",
-      description: "I craft landing pages and brand sites that communicate your message clearly. Modern design, fluid animations, conversion-first. In 1–2 weeks your brand comes alive online.",
+      title: "Presentation website",
+      description: "Landing pages and brochure sites. Clear message, clean design, delivered in 1-2 weeks.",
     },
     {
       icon: Clock,
-      title: "Online Store",
-      description: "I build complete e-commerce platforms: cart, payments, automatic invoicing, advanced filtering. Ready for growth from day one. React + TypeScript for maximum performance.",
+      title: "Online store",
+      description: "Shops with cart, payments and the basics to start selling. Built on React, ready to grow.",
     },
     {
       icon: Zap,
-      title: "Web Applications",
-      description: "I develop custom web apps: admin dashboards, interactive configurators, full-stack platforms. Technical challenges solved with elegant, scalable solutions.",
+      title: "Web apps",
+      description: "Dashboards, complex forms, platforms with a backend. Built for your case, not a template.",
     },
   ],
 } as const
@@ -92,7 +92,7 @@ export const HomePage = memo(() => {
   return (
     <div className="relative">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-start justify-center pt-32">
+      <section className="relative flex items-start justify-center pt-28 pb-8 md:pt-32 md:pb-12">
         
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
@@ -141,8 +141,8 @@ export const HomePage = memo(() => {
                 transition={{ delay: 0.8, duration: 0.8 }}
               >
                 {translate({
-                  ro: "Construiesc site-uri care nu doar arată bine, ci și funcționează impecabil. Design modern, animații fluide, implementare profesională. Fiecare proiect e făcut cu grijă și pasiune pentru detalii.",
-                  en: "I build websites that do more than look good—they perform flawlessly. Modern design, fluid animations, professional implementation. Every project is crafted with care and an obsession for detail.",
+                  ro: "Fac site-uri care arată bine și merg bine. Design modern, animații discrete, cod curat.",
+                  en: "I build sites that look good and work well. Modern design, subtle motion, clean code.",
                 })}
               </motion.p>
 
@@ -195,7 +195,7 @@ export const HomePage = memo(() => {
       </section>
 
       {/* Mini Highlights Section */}
-      <section className="py-20">
+      <section className="pt-4 pb-16 md:pt-8 md:pb-20">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {highlights.map((highlight, index) => (

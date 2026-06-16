@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { api } from "@/lib/api";
+import { BlueprintBrand } from "@/components/ui/blueprint-brand";
 
 export function AcceptInvitePage() {
   const [searchParams] = useSearchParams();
@@ -73,7 +74,7 @@ export function AcceptInvitePage() {
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md rounded-2xl bg-white/70 backdrop-blur-xl p-8 shadow-2xl border border-white/55"
       >
-        <h1 className="text-2xl font-bold text-foreground mb-2">The Blueprint</h1>
+        <BlueprintBrand as="h1" className="mb-2" textClassName="text-2xl" logoClassName="h-8" />
         <p className="text-muted mb-6">Set up your client account</p>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

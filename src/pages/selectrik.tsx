@@ -3,6 +3,7 @@ import { ArrowLeft, Zap, Layers, Code, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline"
+import { ProjectLiveSiteLink } from "@/components/ui/project-live-site-link"
 import { Link } from "react-router-dom"
 import { useLanguage } from "@/contexts/language-context"
 
@@ -553,6 +554,12 @@ export function SelectrikPage() {
               en: "Premium full-stack platform for creative agency - dark design with special effects + complete backend"
             })}
           </p>
+          <div className="mt-8">
+            <ProjectLiveSiteLink
+              url="https://selectrik.ro"
+              buttonClassName="font-bold bg-[#E8C547] hover:bg-[#d4b23f] text-black"
+            />
+          </div>
           <div className="flex flex-wrap justify-center gap-4 mt-6">
             <motion.span
               className="px-4 py-2 rounded-full text-sm font-medium"

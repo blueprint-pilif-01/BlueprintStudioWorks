@@ -3,7 +3,7 @@ const { PDFDocument, StandardFonts } = require('pdf-lib');
 const { getDatabase } = require('../config/database');
 const { pool } = require('../config/database');
 const { logActivity } = require('../lib/activity');
-const { sendEmail } = require('../lib/email');
+const { sendEmailSafe } = require('../lib/email');
 const templates = require('../lib/email-templates');
 
 async function generateContractPdf(renderedText, signatureBuffer) {
@@ -193,7 +193,7 @@ exports.generate = async (req, res) => {
     const signUrl = `${frontendUrl}/dashboard/contracts/${invite.id}/sign?token=${token}`;
 
     const html = templates.contractGenerated({ signUrl, contractNumber: invite.contract_number, packageName: pkg.name_ro, clientName: client.name });
-    await sendEmail(client.email, `Contract ${invite.contract_number} ready to sign`, html);
+    await sendEmailSafe(client.email, `Contract ${invite.contract_number} ready to sign`, html);
 
     res.status(201).json({ invite, signUrl });
   } catch (err) {
@@ -413,7 +413,7 @@ exports.signContract = async (req, res) => {
     const adminEmail = process.env.ADMIN_EMAIL;
     if (adminEmail) {
       const html = templates.contractSigned({ contractNumber: invite.contract_number, clientName: client?.name || client?.email });
-      await sendEmail(adminEmail, `Contract ${invite.contract_number} signed`, html);
+      await sendEmailSafe(adminEmail, `Contract ${invite.contract_number} signed`, html);
     }
 
     res.status(201).json({ submission: sub, message: 'Contract signed successfully' });

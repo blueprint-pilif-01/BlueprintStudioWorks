@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { Send, CheckCircle, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -26,30 +26,47 @@ export function FormSubmit({
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const resetTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const { translate } = useLanguage()
 
   const submitLabel = submitText ?? translate({ ro: "Trimite", en: "Send" })
   const successMessage = successText ?? translate({ ro: "Mesajul a fost trimis!", en: "Your message has been sent!" })
   const errorMessage = errorText ?? translate({ ro: "A apărut o eroare. Te rugăm să încerci din nou.", en: "Something went wrong. Please try again." })
 
+  useEffect(() => {
+    return () => {
+      if (resetTimeoutRef.current) {
+        clearTimeout(resetTimeoutRef.current)
+      }
+    }
+  }, [])
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     
     if (disabled || isSubmitting) return
 
+    const form = e.currentTarget
     setIsSubmitting(true)
     setError(null)
 
     try {
-      const formData = new FormData(e.currentTarget)
+      const formData = new FormData(form)
       await onSubmit(formData)
       
       setIsSubmitted(true)
       
       // Reset form after 3 seconds
-      setTimeout(() => {
+      if (resetTimeoutRef.current) {
+        clearTimeout(resetTimeoutRef.current)
+      }
+
+      resetTimeoutRef.current = setTimeout(() => {
         setIsSubmitted(false)
-        e.currentTarget.reset()
+        if (form.isConnected) {
+          form.reset()
+        }
+        resetTimeoutRef.current = null
       }, 3000)
     } catch (err) {
       setError(err instanceof Error ? err.message : errorMessage)

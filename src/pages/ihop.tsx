@@ -3,6 +3,7 @@ import { ArrowLeft, Star, Download, Heart, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline"
+import { ProjectLiveSiteLink } from "@/components/ui/project-live-site-link"
 import { Link } from "react-router-dom"
 import { useLanguage } from "@/contexts/language-context"
 
@@ -55,14 +56,14 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                       <div className="w-12 h-12 rounded-lg" style={{ background: RED }} />
                       <div>
                         <p className="text-sm font-semibold text-white">Red</p>
-                        <p className="text-xs text-gray-400">#dc2626 — primary</p>
+                        <p className="text-xs text-gray-400">#dc2626, primary</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-lg" style={{ background: DARK }} />
                       <div>
                         <p className="text-sm font-semibold text-white">Black</p>
-                        <p className="text-xs text-gray-400">#0a0a0a — background</p>
+                        <p className="text-xs text-gray-400">#0a0a0a, background</p>
                       </div>
                     </div>
                   </div>
@@ -212,6 +213,12 @@ export function IhopPage() {
               en: "Organization site • React 18 + Anime.js • Hero particles, donate, prayer room",
             })}
           </p>
+          <div className="mt-8">
+            <ProjectLiveSiteLink
+              url="https://ihop.ro"
+              buttonClassName="bg-[#dc2626] hover:bg-[#b91c1c] text-white"
+            />
+          </div>
           <div className="flex flex-wrap justify-center gap-4 mt-6">
             <span className="px-4 py-2 bg-[#dc2626]/20 text-[#dc2626] rounded-full text-sm font-medium">React 18</span>
             <span className="px-4 py-2 bg-[#dc2626]/20 text-[#dc2626] rounded-full text-sm font-medium">Anime.js</span>
@@ -223,8 +230,8 @@ export function IhopPage() {
           data={timelineData}
           title={translate({ ro: "Journey Ihop", en: "Ihop Journey" })}
           subtitle={translate({
-            ro: "De la concept la site informativ — particule hero, flux donate.",
-            en: "From concept to informational site — hero particles, donate flow.",
+            ro: "De la concept la site informativ, particule hero, flux donate.",
+            en: "From concept to informational site, hero particles, donate flow.",
           })}
         />
 

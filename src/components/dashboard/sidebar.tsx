@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/auth-context";
+import { BlueprintBrand } from "@/components/ui/blueprint-brand";
 
 type NavItem = {
   label: string;
@@ -67,8 +68,8 @@ export function Sidebar({ role, collapsed, onToggle }: SidebarProps) {
     >
       <div className={cn("flex items-center h-16 border-b border-gray-100 dark:border-gray-700", collapsed ? "justify-center px-2" : "justify-between px-5")}>
         {!collapsed && (
-          <Link to={role === "admin" ? "/admin" : "/dashboard"} className="font-bold text-[15px] tracking-tight text-gray-900 dark:text-gray-100">
-            The Blueprint
+          <Link to={role === "admin" ? "/admin" : "/dashboard"} className="text-gray-900 dark:text-gray-100">
+            <BlueprintBrand logoClassName="h-6" textClassName="text-[15px]" />
           </Link>
         )}
         <button

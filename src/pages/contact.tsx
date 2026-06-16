@@ -1,12 +1,11 @@
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { FormSubmit } from "@/components/ui/form-submit"
-import { Star, Calculator, Euro, Sparkles, Send, ArrowRight } from "lucide-react"
+import { Star, Calculator, Euro, Sparkles } from "lucide-react"
 import { formatCurrency } from "@/lib/utils"
 import { useLanguage } from "@/contexts/language-context"
 
@@ -45,7 +44,6 @@ const additionalServices: ExtraService[] = [
 ] as const
 
 export function ContactPage() {
-  const [showForm, setShowForm] = useState(false)
   const [selectedPackage, setSelectedPackage] = useState("")
   const [selectedServices, setSelectedServices] = useState<string[]>([])
   const { language, translate } = useLanguage()
@@ -110,7 +108,6 @@ export function ContactPage() {
       }
 
       setTimeout(() => {
-        setShowForm(false)
         setSelectedPackage("")
         setSelectedServices([])
       }, 3000)
@@ -130,25 +127,13 @@ export function ContactPage() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6, type: "spring", bounce: 0.4 }}
-            className="inline-block mb-4"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-full border border-white/30">
-              <Sparkles className="w-5 h-5 text-primary-500" />
-              <span className="text-sm font-semibold text-foreground">
-                {translate({ ro: "Hai să creăm ceva împreună", en: "Let's build something together" })}
-              </span>
-            </div>
-          </motion.div>
-          <motion.h1 
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold text-foreground mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            {translate({ ro: "Ești convins și gata să începem?", en: "Ready to get started?" })}
+            {translate({ ro: "Ai un proiect?", en: "Got a project?" })}
           </motion.h1>
           <motion.p 
             className="text-lg md:text-xl text-muted max-w-2xl mx-auto"
@@ -156,72 +141,28 @@ export function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            {translate({ ro: "Hai să-ți transformăm ideea într-un site care vinde.", en: "Let's turn your idea into a site that sells." })}
+            {translate({ ro: "Spune-mi ce ai nevoie. Răspund de obicei în 1-2 zile.", en: "Tell me what you need. I usually reply within a couple of days." })}
           </motion.p>
         </motion.div>
 
-        {/* Contact Button or Form */}
+        {/* Contact Form, visible directly */}
         <div className="max-w-2xl mx-auto relative">
-          <AnimatePresence mode="wait">
-            {!showForm ? (
-              <motion.div
-                key="button"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ 
-                  opacity: 0, 
-                  scale: 0.8,
-                  y: -30
-                }}
-                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-                className="text-center"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.05, y: -4 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Button
-                    size="lg"
-                    variant="glass"
-                    onClick={() => setShowForm(true)}
-                    className="text-lg px-8 py-6 group relative overflow-hidden shadow-2xl"
-                  >
-                    <span className="relative z-10 flex items-center gap-2">
-                      <Send className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-                      {translate({ ro: "Contactează-mă", en: "Contact me" })}
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                    </span>
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-primary-500/30 to-secondary-500/30 rounded-full"
-                      initial={{ scale: 0, opacity: 0 }}
-                      whileHover={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.4 }}
-                    />
-                  </Button>
-                </motion.div>
-              </motion.div>
-            ) : (
               <motion.div
                 key="form"
-                initial={{ 
-                  opacity: 0, 
-                  y: -50,
-                  scale: 0.9
+                initial={{
+                  opacity: 0,
+                  y: 32,
+                  scale: 0.97
                 }}
-                animate={{ 
-                  opacity: 1, 
+                animate={{
+                  opacity: 1,
                   y: 0,
                   scale: 1
                 }}
-                exit={{ 
-                  opacity: 0, 
-                  y: -30,
-                  scale: 0.95
-                }}
-                transition={{ 
-                  duration: 0.8, 
-                  ease: [0.34, 1.56, 0.64, 1],
-                  opacity: { duration: 0.5 }
+                transition={{
+                  delay: 0.45,
+                  duration: 0.8,
+                  ease: [0.22, 0.61, 0.36, 1]
                 }}
               >
                 <Card className="overflow-hidden">
@@ -540,8 +481,6 @@ export function ContactPage() {
                   </CardContent>
                 </Card>
               </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       </div>
     </div>

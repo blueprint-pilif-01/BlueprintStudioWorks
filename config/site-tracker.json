@@ -1,38 +1,6 @@
 {
   "sites": [
     {
-      "name": "IMBRomania",
-      "slug": "imbromania",
-      "codes": ["imbDelia"],
-      "sourceDir": "../IMBRomania/dist",
-      "todos": [
-        {
-          "id": "imb-hero-copy",
-          "title": "Clarifică mesajul și CTA-ul din hero",
-          "description": "Subliniază bursele și campusurile disponibile chiar în primul ecran.",
-          "priority": "high",
-          "status": "in-progress",
-          "tags": ["copywriting", "hero"]
-        },
-        {
-          "id": "imb-admissions-timeline",
-          "title": "Cronologie interactivă pentru înscrieri",
-          "description": "Arată cele 4 ferestre de înscriere cu termene limită și invitație la tur de campus.",
-          "priority": "medium",
-          "status": "todo",
-          "tags": ["ux", "component"]
-        },
-        {
-          "id": "imb-alumni-slider",
-          "title": "Slider cu absolvenți și testimoniale",
-          "description": "Prezintă 3-4 ținute realizate de absolvenți cu citate înainte de secțiunea de prețuri.",
-          "priority": "medium",
-          "status": "todo",
-          "tags": ["content", "social-proof"]
-        }
-      ]
-    },
-    {
       "name": "TermotalTM",
       "slug": "termotaltm",
       "codes": ["MarianBilaucaTermotal"],
@@ -122,6 +90,27 @@
       "slug": "alphapixels",
       "codes": ["pixelsalpha"],
       "sourceDir": "../AlphaPixels/alphapixels-site/dist",
+      "todos": []
+    },
+    {
+      "name": "Creation House",
+      "slug": "creationhouse",
+      "codes": ["creationHouse"],
+      "sourceDir": "../CreationHouse/dist",
+      "todos": []
+    },
+    {
+      "name": "PhoneShop B2B",
+      "slug": "phoneshopb2b",
+      "codes": ["phoneShopB2B"],
+      "sourceDir": "../PhoneShopB2B/dist",
+      "todos": []
+    },
+    {
+      "name": "La Calul Alb",
+      "slug": "calulalb",
+      "codes": ["calulAlb"],
+      "sourceDir": "../CalulAlb/dist",
       "todos": []
     }
   ]

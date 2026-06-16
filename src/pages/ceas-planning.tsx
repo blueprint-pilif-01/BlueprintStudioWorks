@@ -55,14 +55,14 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                       <div className="w-12 h-12 rounded-lg" style={{ background: ORANGE }} />
                       <div>
                         <p className="text-sm font-semibold text-white">Orange</p>
-                        <p className="text-xs text-gray-400">#FF8C42 — accent</p>
+                        <p className="text-xs text-gray-400">#FF8C42, accent</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-lg" style={{ background: DARK }} />
                       <div>
                         <p className="text-sm font-semibold text-white">Dark</p>
-                        <p className="text-xs text-gray-400">#0a0a0a — background</p>
+                        <p className="text-xs text-gray-400">#0a0a0a, background</p>
                       </div>
                     </div>
                   </div>
@@ -161,8 +161,8 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                 </div>
                 <p className="text-sm text-gray-400 leading-relaxed">
                   {translate({
-                    ro: "Orange accent pe dark/light, PlannerNav layout, dashboard cu grid clickable. Fără link public — proiect intern.",
-                    en: "Orange accent on dark/light, PlannerNav layout, dashboard with clickable grid. No public link — internal project.",
+                    ro: "Orange accent pe dark/light, PlannerNav layout, dashboard cu grid clickable. Fără link public, proiect intern.",
+                    en: "Orange accent on dark/light, PlannerNav layout, dashboard with clickable grid. No public link, internal project.",
                   })}
                 </p>
               </div>
@@ -210,8 +210,8 @@ export function CeasPlanningPage() {
           data={timelineData}
           title={translate({ ro: "Journey CEAS Planning", en: "CEAS Planning Journey" })}
           subtitle={translate({
-            ro: "Sistem intern de planificare — evenimente, contracte digitale, înscrieri.",
-            en: "Internal planning system — events, digital contracts, registrations.",
+            ro: "Sistem intern de planificare, evenimente, contracte digitale, înscrieri.",
+            en: "Internal planning system, events, digital contracts, registrations.",
           })}
         />
 

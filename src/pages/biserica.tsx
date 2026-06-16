@@ -3,6 +3,7 @@ import { ArrowLeft, TrendingUp, Users, Calendar, Music, Heart, Video, Phone, Mai
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline"
+import { ProjectLiveSiteLink } from "@/components/ui/project-live-site-link"
 import { Link } from "react-router-dom"
 import { useLanguage } from "@/contexts/language-context"
 
@@ -866,6 +867,12 @@ export function BisericaPage() {
               en: "Complete digital ecosystem for a modern church community - public site + UNITED youth + complex planner"
             })}
           </p>
+          <div className="mt-8">
+            <ProjectLiveSiteLink
+              url="https://biserica-vertical.ro"
+              buttonClassName="font-bold bg-[#EAFB2A] hover:bg-[#d4e625] text-black"
+            />
+          </div>
           <div className="flex flex-wrap justify-center gap-4 mt-6">
             <motion.span
               className="px-4 py-2 rounded-full text-sm font-medium"

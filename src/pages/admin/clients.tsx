@@ -56,7 +56,7 @@ export function AdminClientsPage() {
   const columns = [
     { key: "name", label: "Name", render: (r: Client) => (
       <Link to={`/admin/clients/${r.id}`} className="font-medium text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-        {r.name || "—"}
+        {r.name || ", "}
       </Link>
     )},
     { key: "email", label: "Email", render: (r: Client) => <span className="text-gray-500 dark:text-gray-400">{r.email}</span> },

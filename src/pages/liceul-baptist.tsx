@@ -3,6 +3,7 @@ import { ArrowLeft, Star, Download, BookOpen, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline"
+import { ProjectLiveSiteLink } from "@/components/ui/project-live-site-link"
 import { Link } from "react-router-dom"
 import { useLanguage } from "@/contexts/language-context"
 
@@ -55,14 +56,14 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                       <div className="w-12 h-12 rounded-lg" style={{ background: BLUE }} />
                       <div>
                         <p className="text-sm font-semibold text-[#1a3d5c]">Brand Blue</p>
-                        <p className="text-xs text-gray-600">#1a3d5c — accent</p>
+                        <p className="text-xs text-gray-600">#1a3d5c, accent</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-lg" style={{ background: LIGHT }} />
                       <div>
                         <p className="text-sm font-semibold text-[#1a3d5c]">Cream</p>
-                        <p className="text-xs text-gray-600">#fafaf8 — background</p>
+                        <p className="text-xs text-gray-600">#fafaf8, background</p>
                       </div>
                     </div>
                   </div>
@@ -147,8 +148,8 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                 </div>
                 <p className="text-sm text-gray-600 leading-relaxed">
                   {translate({
-                    ro: "Site pentru Olimpiada Națională de Religie — concurs, program, legislație, parteneri, donații. Hero video, Lenis smooth scroll, accesibilitate.",
-                    en: "Site for National Religion Olympiad — contest, program, legislation, partners, donations. Video hero, Lenis smooth scroll, accessibility.",
+                    ro: "Site pentru Olimpiada Națională de Religie, concurs, program, legislație, parteneri, donații. Hero video, Lenis smooth scroll, accesibilitate.",
+                    en: "Site for National Religion Olympiad, contest, program, legislation, partners, donations. Video hero, Lenis smooth scroll, accessibility.",
                   })}
                 </p>
               </div>
@@ -212,6 +213,12 @@ export function LiceulBaptistPage() {
               en: "National Religion Olympiad • React 18 + Lenis • Video hero, smooth scroll",
             })}
           </p>
+          <div className="mt-8">
+            <ProjectLiveSiteLink
+              url="https://onr-ltbtm.ro"
+              buttonClassName="bg-[#1a3d5c] hover:bg-[#2d6ba8] text-white"
+            />
+          </div>
           <div className="flex flex-wrap justify-center gap-4 mt-6">
             <span className="px-4 py-2 bg-[#1a3d5c]/20 text-[#1a3d5c] rounded-full text-sm font-medium">React 18</span>
             <span className="px-4 py-2 bg-[#1a3d5c]/20 text-[#1a3d5c] rounded-full text-sm font-medium">Lenis</span>
@@ -223,8 +230,8 @@ export function LiceulBaptistPage() {
           data={timelineData}
           title={translate({ ro: "Journey Liceul Baptist", en: "Liceul Baptist Journey" })}
           subtitle={translate({
-            ro: "De la concept la site olimpiadă — video hero, accesibilitate.",
-            en: "From concept to Olympiad site — video hero, accessibility.",
+            ro: "De la concept la site olimpiadă, video hero, accesibilitate.",
+            en: "From concept to Olympiad site, video hero, accessibility.",
           })}
         />
 

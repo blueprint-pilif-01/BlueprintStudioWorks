@@ -143,11 +143,11 @@ function PackageEditor({ pkg, onUpdate }: { pkg: Package; onUpdate: (id: number,
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-semibold text-gray-500 dark:text-gray-400">Features (RO) — one per line</label>
+                  <label className="text-xs font-semibold text-gray-500 dark:text-gray-400">Features (RO), one per line</label>
                   <Textarea value={featuresRo} onChange={(e) => setFeaturesRo(e.target.value)} rows={5} className="mt-1 !bg-gray-50 dark:!bg-gray-700 !border-gray-200 dark:!border-gray-600 text-xs" />
                 </div>
                 <div>
-                  <label className="text-xs font-semibold text-gray-500 dark:text-gray-400">Features (EN) — one per line</label>
+                  <label className="text-xs font-semibold text-gray-500 dark:text-gray-400">Features (EN), one per line</label>
                   <Textarea value={featuresEn} onChange={(e) => setFeaturesEn(e.target.value)} rows={5} className="mt-1 !bg-gray-50 dark:!bg-gray-700 !border-gray-200 dark:!border-gray-600 text-xs" />
                 </div>
               </div>

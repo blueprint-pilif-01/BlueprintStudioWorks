@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const { getDatabase } = require('../config/database');
 const { logActivity } = require('../lib/activity');
-const { sendEmail } = require('../lib/email');
+const { sendEmailSafe } = require('../lib/email');
 const templates = require('../lib/email-templates');
 
 exports.stats = async (req, res) => {
@@ -103,7 +103,7 @@ exports.replyFeedback = async (req, res) => {
       const client = await db.prepare(`SELECT email, name FROM clients WHERE id = $1`).get(fbBefore.client_id);
       if (client?.email) {
         const html = templates.feedbackReplied({ adminReply: admin_reply });
-        await sendEmail(client.email, 'Reply to your feedback', html);
+        await sendEmailSafe(client.email, 'Reply to your feedback', html);
       }
     }
     res.json({ feedback: fb });

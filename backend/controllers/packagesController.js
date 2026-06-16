@@ -1,6 +1,6 @@
 const { getDatabase } = require('../config/database');
 const { logActivity } = require('../lib/activity');
-const { sendEmail } = require('../lib/email');
+const { sendEmailSafe } = require('../lib/email');
 const templates = require('../lib/email-templates');
 
 /**
@@ -240,7 +240,7 @@ exports.assignToClient = async (req, res) => {
     const clientRow = await db.prepare(`SELECT email, name FROM clients WHERE id = $1`).get(parseInt(clientId));
     if (clientRow?.email) {
       const html = templates.packageAssigned({ packageName: cp.name_ro, clientName: clientRow.name });
-      await sendEmail(clientRow.email, `Package ${cp.name_ro} assigned to you`, html);
+      await sendEmailSafe(clientRow.email, `Package ${cp.name_ro} assigned to you`, html);
     }
 
     res.status(201).json({ clientPackage: cp });

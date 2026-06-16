@@ -3,6 +3,7 @@ import { ArrowLeft, Star, Download, Camera, MessageSquare, FileText, ExternalLin
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline"
+import { ProjectLiveSiteLink } from "@/components/ui/project-live-site-link"
 import { Link } from "react-router-dom"
 import { useLanguage } from "@/contexts/language-context"
 
@@ -445,7 +446,7 @@ const timelineDataEn: TimelineEntry[] = [
             <div>
               <h4 className="text-2xl font-bold text-[#2C1810] mb-4">7 Full Pages</h4>
               <p className="text-[#4A3428] mb-6">
-                We built seven focused pages—from the attention-grabbing homepage to a detailed before/after gallery.
+                We built seven focused pages, from the attention-grabbing homepage to a detailed before/after gallery.
                 Every screen is optimized for conversions, trust, and a frictionless user experience.
               </p>
               <div className="grid grid-cols-2 gap-3">
@@ -715,9 +716,15 @@ export function DivinePage() {
           <p className="text-xl md:text-2xl text-[#4A3428] max-w-3xl mx-auto">
             {translate({
               ro: "Salon de epilare definitivă premium cu site web modern - 7 pagini complete, React + TypeScript, SEO optimizat",
-              en: "Premium laser hair removal studio with a modern site — 7 full pages, React + TypeScript, SEO ready."
+              en: "Premium laser hair removal studio with a modern site, 7 full pages, React + TypeScript, SEO ready."
             })}
           </p>
+          <div className="mt-8">
+            <ProjectLiveSiteLink
+              url="https://divineskin.ro"
+              buttonClassName="bg-gradient-to-r from-[#B8860B] to-[#2B7A3F] hover:from-[#9A7209] hover:to-[#236332] text-white"
+            />
+          </div>
           <div className="flex flex-wrap justify-center gap-4 mt-6">
             <span className="px-4 py-2 bg-[#B8860B]/20 text-[#B8860B] rounded-full text-sm font-medium">
               React + TypeScript
@@ -740,7 +747,7 @@ export function DivinePage() {
           title={translate({ ro: "Journey-ul Divine Skin", en: "Divine Skin Journey" })}
           subtitle={translate({
             ro: "De la concept la succes - povestea completă a transformării digitale",
-            en: "From concept to results—the full story of this digital transformation.",
+            en: "From concept to results, the full story of this digital transformation.",
           })}
         />
 

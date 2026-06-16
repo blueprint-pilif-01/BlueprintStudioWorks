@@ -55,14 +55,14 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                       <div className="w-12 h-12 rounded-lg" style={{ background: GOLD }} />
                       <div>
                         <p className="text-sm font-semibold text-white">Gold</p>
-                        <p className="text-xs text-gray-400">#D4AF37 — {translate({ ro: "accent principal", en: "primary accent" })}</p>
+                        <p className="text-xs text-gray-400">#D4AF37, {translate({ ro: "accent principal", en: "primary accent" })}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-lg" style={{ background: BLACK }} />
                       <div>
                         <p className="text-sm font-semibold text-white">Black</p>
-                        <p className="text-xs text-gray-400">#0A0A0A — {translate({ ro: "fundal", en: "background" })}</p>
+                        <p className="text-xs text-gray-400">#0A0A0A, {translate({ ro: "fundal", en: "background" })}</p>
                       </div>
                     </div>
                   </div>
@@ -119,10 +119,10 @@ function makeTimelineData(translate: (t: { ro: string; en: string }) => string):
                 <div className="p-5 bg-[#D4AF37]/5 rounded-2xl border border-[#D4AF37]/20">
                   <h5 className="font-semibold text-white mb-3">{translate({ ro: "Efecte Speciale", en: "Special Effects" })}</h5>
                   <ul className="text-sm text-gray-400 space-y-2">
-                    <li className="flex items-start gap-2"><span className="text-[#D4AF37]">•</span> LightPillar — Three.js gradient pillar background</li>
-                    <li className="flex items-start gap-2"><span className="text-[#D4AF37]">•</span> GlitterOverlay — Gold particle overlay</li>
-                    <li className="flex items-start gap-2"><span className="text-[#D4AF37]">•</span> Page transitions — Framer Motion AnimatePresence</li>
-                    <li className="flex items-start gap-2"><span className="text-[#D4AF37]">•</span> Scroll animations — whileInView for sections</li>
+                    <li className="flex items-start gap-2"><span className="text-[#D4AF37]">•</span> LightPillar, Three.js gradient pillar background</li>
+                    <li className="flex items-start gap-2"><span className="text-[#D4AF37]">•</span> GlitterOverlay, Gold particle overlay</li>
+                    <li className="flex items-start gap-2"><span className="text-[#D4AF37]">•</span> Page transitions, Framer Motion AnimatePresence</li>
+                    <li className="flex items-start gap-2"><span className="text-[#D4AF37]">•</span> Scroll animations, whileInView for sections</li>
                   </ul>
                 </div>
               </div>
@@ -215,8 +215,8 @@ export function AloraBrightPage() {
           data={timelineData}
           title={translate({ ro: "Journey Alora Bright", en: "Alora Bright Journey" })}
           subtitle={translate({
-            ro: "De la concept la site premium — tehnologie laser și design luxos.",
-            en: "From concept to premium site — laser technology and luxury design.",
+            ro: "De la concept la site premium, tehnologie laser și design luxos.",
+            en: "From concept to premium site, laser technology and luxury design.",
           })}
         />
 

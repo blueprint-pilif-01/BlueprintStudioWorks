@@ -93,7 +93,7 @@ html, body {
 - `robots.txt` - Allow/disallow bots
 - `.htaccess` - Security, caching, compression
 
-### ✅ **FormSubmit**
+### ✅ **Backend Nodemailer**
 - Email: blueprintstudioworks@gmail.com
 - Validare completă
 - Calculator preț live
@@ -168,4 +168,3 @@ fontSize: "clamp(1rem, 3vw, 1.25rem)"
 ---
 
 **Site-ul e 100% production-ready pentru TOATE dispozitivele!** 🚀📱💻
-

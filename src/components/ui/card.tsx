@@ -6,7 +6,7 @@ const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElemen
   ({ className, children, ...props }, ref) => (
     <SpotlightCard
       ref={ref}
-      className={cn("glass backdrop-blur-xl", className)}
+      className={cn("glass", className)}
       spotlightColor="rgba(0, 229, 255, 0.25)"
       {...props}
     >

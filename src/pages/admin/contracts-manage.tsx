@@ -44,7 +44,7 @@ export function AdminContractsManagePage() {
   const columns = [
     { key: "contract_number", label: "Contract #", render: (r: Contract) => <span className="font-medium text-gray-900 dark:text-gray-100">{r.contract_number}</span> },
     { key: "template_title", label: "Template", render: (r: Contract) => r.template_title },
-    { key: "package", label: "Package", render: (r: Contract) => r.package_name_ro || "—" },
+    { key: "package", label: "Package", render: (r: Contract) => r.package_name_ro || ", " },
     { key: "status", label: "Status", render: (r: Contract) => {
       const styles: Record<string, string> = {
         signed: "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400",
